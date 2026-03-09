@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Carousel</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 80%;
+            margin: auto;
+            overflow: hidden;
+            display: block;
+        }
+
+        .carousel-slides,
+        .carousel-slides2 {
+            display: flex;
+            width: 100%;
+        }
+
+        .carousel-slides .slide,
+        .carousel-slides2 .slide2 {
+            display: flex;
+            width: 100%;
+        }
+
+        .carousel-slides a,
+        .carousel-slides2 a {
+            flex: 1;
+            text-align: center;
+            display: block;
+            padding: 5px;
+        }
+
+        .carousel-slides img,
+        .carousel-slides2 img {
+            width: 80%;
+            vertical-align: middle;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            z-index: 100;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container1">
+
+        <div class="carousel carousel-1">
+            <h2>Best Seller Products</h2>
+            <div class="carousel-slides">
+                <div class="slide">
+                    <a href="https://drive.google.com/"><img
+                            src="https://m.media-amazon.com/images/I/81vqvGoSo4L._AC_SL1500_.jpg" alt="Product 2"></a>
+                    <a href="product3.html"><img src="https://m.media-amazon.com/images/I/71pVEzamE9L._AC_SL1500_.jpg"
+                            alt="Product 3"></a>
+                    <a href="product2.html"><img src="https://m.media-amazon.com/images/I/71Cb2GNQeQL._AC_SL1500_.jpg"
+                            alt="Product 2"></a>
+                    <a href="product3.html"><img src="https://m.media-amazon.com/images/I/71anG4cVc2L._AC_SL1500_.jpg"
+                            alt="Product 3"></a>
+                </div>
+                <div class="slide">
+                    <a href="product2.html"><img src="https://m.media-amazon.com/images/I/71Cb2GNQeQL._AC_SL1500_.jpg"
+                            alt="Product 2"></a>
+                    <a href="product3.html"><img src="https://m.media-amazon.com/images/I/71anG4cVc2L._AC_SL1500_.jpg"
+                            alt="Product 3"></a>
+                    <a href="product2.html"><img src="https://m.media-amazon.com/images/I/81vqvGoSo4L._AC_SL1500_.jpg"
+                            alt="Product 2"></a>
+                    <a href="product3.html"><img src="https://m.media-amazon.com/images/I/71pVEzamE9L._AC_SL1500_.jpg"
+                            alt="Product 3"></a>
+                </div>
+            </div>
+            <button class="prev" onclick="moveSlide(-1, 'carousel-1')">&#10094;</button>
+            <button class="next" onclick="moveSlide(1, 'carousel-1')">&#10095;</button>
+        </div>
+    </div>
+    <hr>
+    <div class="container2">
+        <div class="carousel carousel-2">
+            <h2>Hot New Releases</h2>
+            <div class="carousel-slides2">
+                <div class="slide2">
+                    <a href="https://drive.google.com/"><img
+                            src="https://m.media-amazon.com/images/I/81vqvGoSo4L._AC_SL1500_.jpg" alt="Product 2"></a>
+                    <a href="product3.html"><img src="https://m.media-amazon.com/images/I/71pVEzamE9L._AC_SL1500_.jpg"
+                            alt="Product 3"></a>
+                    <a href="product2.html"><img src="https://m.media-amazon.com/images/I/71Cb2GNQeQL._AC_SL1500_.jpg"
+                            alt="Product 2"></a>
+                    <a href="product3.html"><img src="https://m.media-amazon.com/images/I/71anG4cVc2L._AC_SL1500_.jpg"
+                            alt="Product 3"></a>
+                </div>
+                <div class="slide2">
+                    <a href="product2.html"><img src="https://m.media-amazon.com/images/I/71Cb2GNQeQL._AC_SL1500_.jpg"
+                            alt="Product 2"></a>
+                    <a href="product3.html"><img src="https://m.media-amazon.com/images/I/71anG4cVc2L._AC_SL1500_.jpg"
+                            alt="Product 3"></a>
+                    <a href="product2.html"><img src="https://m.media-amazon.com/images/I/81vqvGoSo4L._AC_SL1500_.jpg"
+                            alt="Product 2"></a>
+                    <a href="product3.html"><img src="https://m.media-amazon.com/images/I/71pVEzamE9L._AC_SL1500_.jpg"
+                            alt="Product 3"></a>
+                </div>
+            </div>
+            <button class="prev" onclick="moveSlide(-1, 'carousel-2')">&#10094;</button>
+            <button class="next" onclick="moveSlide(1, 'carousel-2')">&#10095;</button>
+        </div>
+    </div>
+    <script>
+        let indexes = { 'carousel-1': 0, 'carousel-2': 0 }; // Track the index for each carousel
+
+        function showSlide(n, carouselId) {
+            let slides = document.querySelector('.' + carouselId).getElementsByClassName(carouselId === 'carousel-1' ? 'slide' : 'slide2');
+            if (n > slides.length - 1) indexes[carouselId] = 0;
+            if (n < 0) indexes[carouselId] = slides.length - 1;
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[indexes[carouselId]].style.display = "flex"; // Display the current slide as a flexbox
+        }
+
+        function moveSlide(n, carouselId) {
+            showSlide(indexes[carouselId] += n, carouselId);
+        }
+
+        // Initialize both carousels
+        showSlide(indexes['carousel-1'], 'carousel-1');
+        showSlide(indexes['carousel-2'], 'carousel-2');
+    </script>
+</body>
+
+</html>

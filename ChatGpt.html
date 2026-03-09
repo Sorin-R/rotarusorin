@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Outline&family=Ubuntu:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-styles.css">
+    <title>Sorin Rotaru</title>
+</head>
+<style>
+    @import url('mobile-styles.css');
+
+    @import url('https://fonts.googleapis.com/css2?family=Londrina+Outline&family=Ubuntu:wght@400;700&display=swap');
+
+    * {
+        margin: 0;
+    }
+
+    html,
+    body {
+        width: auto !important;
+        overflow-x: hidden !important;
+        font-family: 'Ubuntu', sans-serif;
+        color: #10193d;
+    }
+
+    body {
+        overflow-x: hidden;
+        border: 2px solid #10193d;
+        border-radius: 0;
+        margin-right: 0;
+    }
+
+    a {
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    #hidden-header {
+        position: fixed;
+        top: -90px;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background-color: #f8f8f8;
+        color: #10193d;
+        text-align: center;
+        transition: top 1s ease-in-out;
+        border: 2px solid #10193d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-content: space-around;
+        z-index: 100000;
+    }
+
+    #hidden-header.visible {
+        top: 0;
+        transition: top 1s ease-in-out;
+    }
+
+    .header-bottom {
+        top: 100px;
+        height: 2px;
+    }
+
+    #hidden-header nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    #hidden-header nav ul li {
+        margin-right: 10px;
+    }
+
+    #hidden-header nav ul li a {
+        text-decoration: none;
+        color: #10193d;
+        font-family: Roobert, sans-serif;
+        font-size: 24px;
+        margin-right: 35px;
+    }
+
+    #hidden-header nav ul li a:hover {
+        font-weight: bold;
+    }
+
+    #hidden-header nav ul li a.active {
+        color: #1e90ff;
+    }
+
+    .nav-list {
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    .hamburger {
+        display: none;
+        padding: 10px;
+        position: fixed;
+        z-index: 10000;
+        width: 100%;
+    }
+
+    .burger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border: 5px #10193d solid;
+        border-radius: 5px;
+        background-color: #e4c1f9;
+        box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    #close-icon {
+        padding-left: 19px;
+    }
+
+    .hamburger.active {
+        display: block;
+        background-color: #f8f8f8;
+        text-align: center;
+        z-index: 10000;
+    }
+
+    .fa-burger,
+    .fa-xmark {
+        margin-right: 20px;
+    }
+
+    hr {
+        height: 2px;
+        background-color: #10193d;
+    }
+
+    #toggleButton {
+        transition: all 2s;
+        cursor: pointer;
+    }
+
+    .social-network {
+        justify-content: space-between;
+    }
+
+    #facebook-icon {
+        font-size: 2em;
+        color: #10193d;
+        transition: all 2s;
+        cursor: pointer;
+        padding: 10px;
+        font-size: 2em;
+        border-radius: 2px;
+    }
+
+    #facebook-icon.animate {
+        transform: rotate(360deg) scale(1.2);
+        color: #1e90ff;
+    }
+
+    #twitter-icon {
+        font-size: 2em;
+        color: #10193d;
+        transition: all 2s;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    #twitter-icon.animate {
+        transform: rotate(360deg) scale(1.2);
+        color: #1e90ff;
+    }
+
+    #linkedin-icon {
+        font-size: 2em;
+        color: #10193d;
+        transition: all 2s;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    #linkedin-icon.animate {
+        transform: rotate(360deg) scale(1.2);
+        color: #1e90ff;
+    }
+
+    .box {
+        width: 100%;
+        height: 100vh;
+        background-color: #e4c1f9;
+        margin: 0 0 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    #delayedText1 {
+        font-size: 150px;
+    }
+
+    #delayedText {
+        font-size: 150px;
+    }
+
+    .delay {
+        opacity: 0;
+        transform: scale(0);
+        font-size: 0px;
+        transition: opacity 2s, transform 2s, font-size 2s;
+        position: absolute;
+        z-index: 1;
+        text-align: left;
+    }
+
+    .delay1 {
+        opacity: 0;
+        transform: scale(0);
+        font-size: 0px;
+        transition: opacity 2s, transform 2s, font-size 2s;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .delay1 {
+        display: flex;
+        justify-content: start;
+        align-items: baseline;
+        height: 1.2em;
+        text-align: left;
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(300px);
+        }
+
+        20% {
+            opacity: 0.2;
+        }
+
+        40% {
+            opacity: 0.4;
+        }
+
+        60% {
+            opacity: 0.6;
+        }
+
+        80% {
+            opacity: 0.8;
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fadeInUp {
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes dropDown {
+        0% {
+            transform: translateY(-1000px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .dropDown {
+        animation: dropDown 1s ease-out forwards;
+        display: inline-block;
+    }
+
+    .copyright-link {
+        font-size: 30px;
+        margin-top: 85vh;
+        color: #10193d;
+        display: block;
+        margin-left: -20vh;
+        justify-content: start;
+    }
+
+    .marquee {
+        overflow: hidden;
+        position: relative;
+        white-space: nowrap;
+        width: 100%;
+        background-color: #f8f8f8;
+    }
+
+    .track {
+        display: inline-block;
+        padding-left: -100%;
+        animation: marquee 20s linear infinite;
+    }
+
+    .track .font1 {
+        padding: 0 2rem;
+        font-size: 100px;
+        color: #10193d;
+    }
+
+    .track .font2 {
+        padding: 0 2rem;
+        font-size: 100px;
+        color: #10193d;
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(-30%);
+        }
+
+        100% {
+            transform: translateX(-70%);
+        }
+    }
+
+    .container {
+        height: 100vh;
+        width: 100%;
+        background-color: #a9def9;
+        margin: 0 0 -60px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        display: flex;
+        overflow: hidden;
+    }
+
+    .experience-box {
+        position: relative;
+        width: 60vmax;
+        background-size: cover;
+        background-color: #f8f8f8;
+        border-radius: 20px;
+        transition: transform 1s ease-out;
+        transform: translateY(-100%) scale(1);
+        border: 2px solid #10193d;
+        background-color: #f8f8f8;
+        margin-top: -400px;
+        padding: 31px;
+    }
+
+    .arrow-experience-box {
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        left: 50%;
+        transform: translate(-50%);
+        margin-top: 30px;
+    }
+
+    .arrow-imagine {
+        width: 100px;
+    }
+
+    .about-title {
+        padding: 10px;
+        border-radius: 10px;
+        text-align: justify;
+        font-family: Roobert, sans-serif;
+        font-size: 22px;
+        line-height: 26px;
+    }
+
+    .about-text {
+        padding: 10px;
+        border-radius: 10px;
+        text-align: justify;
+        font-family: Roobert, sans-serif;
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .mobile-img {
+        display: none;
+    }
+
+    .circle {
+        display: flex;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        margin-top: 400px;
+        top: -2000px;
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg);
+        transition: top 2s ease, opacity 2s ease;
+        background-image: url('/img/sorin.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        width: 400px;
+        height: 400px;
+    }
+
+    .circle.active {
+        top: calc(50% - 50px);
+        opacity: 1;
+    }
+
+    .circle.rotate {
+        animation: rotation 1s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes rotation {
+        from {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        to {
+            transform: translate(-50%, -50%) rotate(360deg);
+        }
+    }
+
+    .box2 {
+        height: 100vh;
+        width: 100%;
+        background-color: #d0f4de;
+        margin: -45px 0 0 0;
+    }
+
+    .stop-spinning {
+        animation: none;
+    }
+
+    .scroll-circle {
+        position: fixed;
+        bottom: 81px;
+        right: 60px;
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        border-color: #f8f8f8;
+        border: 5px;
+        background-color: #10193d;
+        color: #f8f8f8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 30px;
+        z-index: 900;
+    }
+
+    .arrow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 6px 8px 6px;
+        border-color: transparent transparent #f8f8f8 transparent;
+        margin-bottom: 10px;
+    }
+
+    .scroll-text {
+        animation: scrollTextAnim 2s infinite linear;
+    }
+
+    @keyframes scrollTextAnim {
+        0% {
+            transform: rotateZ(0deg);
+        }
+
+        100% {
+            transform: rotateZ(360deg);
+        }
+    }
+
+    .scroll-arrow22 {
+        position: fixed;
+        left: auto;
+        top: auto;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        width: 150px;
+        height: 150px;
+        margin-right: 40px;
+        margin-bottom: 60px;
+        justify-content: center;
+        align-items: center;
+        transform: translate3d(0px, -1.3335px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        transform-style: preserve-3d;
+        will-change: transform;
+        opacity: 1;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    .scroll-text-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .scroll-text2 {
+        height: 170px;
+        animation: scrollTextAnim 5s infinite linear;
+    }
+
+    .centered-i {
+        font-size: 24px;
+        font-weight: bold;
+        color: #f8f8f8;
+    }
+
+    .image-31 {
+        animation: jumpUpDown 0.5s infinite alternate;
+    }
+
+    @keyframes jumpUpDown {
+        0% {
+            transform: translateY(0);
+        }
+
+        100% {
+            transform: translateY(-7px);
+        }
+    }
+
+    .stroke-text22 {
+        font-size: 150px;
+        font-weight: bold;
+        text-align: center;
+        color: transparent;
+        -webkit-text-stroke: 2px #10193d;
+        display: inline;
+        margin-right: 100px;
+    }
+
+    @keyframes marqueeAnim {
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    .work-marquee-container {
+        display: flex;
+        width: 100%;
+        height: 4vw;
+        margin-top: 16px;
+        margin-left: 0;
+        align-items: center;
+        grid-column-gap: 4vw;
+        transform: translate(0, 0);
+    }
+
+    .work-marquee-outer-container {
+        overflow-x: hidden;
+        height: 100px;
+        margin-left: -20px;
+        border-top: 2px solid #10193d;
+        border-bottom: 2px solid #f8f8f8;
+        background-color: #10193d;
+        box-shadow: 7px 7px 0 0 #10193d;
+        transform: rotate(-3deg);
+        transition: transform 0.3s ease-in-out;
+        margin: 0 -10px 0 -10px;
+    }
+
+    .work-set {
+        display: flex;
+        grid-column-gap: 3vw;
+        grid-row-gap: 0vw;
+    }
+
+    .work-heading {
+        margin: 0;
+        color: #f8f8f8;
+        font-size: 4vw;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .work-heading {
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .work-set {
+        animation: marquee 15s linear infinite;
+    }
+
+    .work-heading {
+        cursor: pointer;
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    .work-set {
+        display: flex;
+        width: max-content;
+        animation: marquee 30s linear infinite;
+    }
+
+    .work-set::before,
+    .work-set::after {
+        content: attr(data-text);
+    }
+
+    .work-heading {
+        margin-right: 50px;
+        cursor: pointer;
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(calc(-1 * 100% / 3));
+        }
+    }
+
+    #section-portfolio {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding-top: 100px;
+    }
+
+    .portfolio-title {
+        display: block;
+        font-size: 100px;
+        padding: 10px;
+        text-align: center;
+        margin-top: -130px;
+        color: #10193d;
+    }
+
+    .portfolio-item {
+        position: relative;
+        background-color: #e4c1f9;
+        width: 70%;
+        height: 100px;
+        border-top: 2px solid #10193d;
+        border-right: 2px solid #10193d;
+        border-left: 2px solid #10193d;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .border-botttom-item {
+        border-bottom: 2px solid #10193d;
+    }
+
+    .ppc-box {
+        font-size: 50px;
+        cursor: pointer;
+    }
+
+    .submenu {
+        display: none;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .submenu-item {
+        padding: 8px 16px;
+        background-color: #fcf6bd;
+        height: 85px;
+        justify-content: space-around;
+        align-items: center;
+        display: flex;
+        text-align: center;
+    }
+
+    .submenu-item a {
+        color: #10193d;
+        text-decoration: none;
+        font-size: 33px;
+    }
+
+    .portfolio-item:hover {
+        background-color: #10193da9;
+        color: #f8f8f8;
+    }
+
+    .submenu-item a:hover {
+        color: #000000;
+        font-weight: 600;
+    }
+
+    .toggle {
+        position: absolute;
+        right: 10px;
+        font-size: 50px;
+        transition: transform 1s ease-in-out;
+        z-index: 1000;
+        color: #f8f8f8;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .to-link {
+        text-align: center;
+        display: flex;
+        align-items: center;
+    }
+
+    .box3 {
+        width: 100%;
+        background-color: #e1eff6;
+    }
+
+    .education-title {
+        display: block;
+        position: absolute;
+        font-size: 100px;
+        padding: 10px;
+        text-align: center;
+        margin-top: -130px;
+        color: #10193d;
+    }
+
+    #section-awards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 150px;
+        padding-bottom: 150px;
+    }
+
+    .award-item {
+        flex-basis: calc(33.33% - 20px);
+        height: 250px;
+        margin: 20px;
+        background-color: #f8f8f8;
+        box-shadow: 0 0 5px #10193d;
+        color: #10193d;
+        opacity: 0;
+        transition: opacity 3s ease-in-out;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    .award-item:hover,
+    .award-item.clicked {
+        box-shadow: 0 0 10px #10193d;
+        transform: scale(1.01);
+        background-color: rgba(0, 0, 0, 0.508);
+        color: #f8f8f8;
+    }
+
+    .animate-education-box {
+        opacity: 1;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .html-css {
+        background-image: url(/img/beonmax.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .amazon-setup {
+        background-image: url(/img/setup.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .tkuk {
+        background-image: url(/img/tquk.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .arden {
+        background-image: url(/img/ardenlogo.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .readmore {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #10193d;
+        color: #f8f8f8;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+
+    .award-item:hover .readmore {
+        display: block;
+    }
+
+    .award-item:hover .year-box {
+        display: block;
+    }
+
+    .year-box {
+        display: none;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        /* background-color: #f8f8f8;
+  color: #322e2f; */
+        position: relative;
+        margin: 150px 0 0 50%;
+        transform: translateX(-50%);
+    }
+
+    .year-2021::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+    }
+
+    .year-2021::after {
+        content: '2021';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+    }
+
+    .year-2022::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+    }
+
+    .year-2022::after {
+        content: '2022';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+    }
+
+    .year-2023::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+    }
+
+    .year-2023::after {
+        content: '2023';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+    }
+
+    .box4 {
+        width: 100%;
+        height: 100vh;
+        background-color: #f8f8f8;
+    }
+
+    .lets-talk {
+        text-align: center;
+        padding: 10px;
+        font-size: 100px;
+        font-weight: 900;
+        color: #10193d;
+        position: absolute;
+        margin-top: -655px;
+    }
+
+    .envelope {
+        width: 900px;
+        height: 500px;
+        background-image: url(/img/envelope.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        perspective: 1000px;
+        transition: transform 20s, opacity 3s;
+        transform-style: preserve-3d;
+        border-radius: 25px;
+        box-shadow: 0 2px 40px #10193d;
+    }
+
+    .form {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        background: #f8f8f8;
+        box-sizing: border-box;
+        transform: rotateX(0deg);
+        transform-origin: bottom;
+        transition: transform 0.8s, opacity 0.8s;
+        border: 3px solid #10193d;
+        border-radius: 20px;
+        opacity: 1;
+        /* touch-action: manipulation;
+  -ms-touch-action: manipulation; */
+        /* touch-action: pan-x pinch-zoom; */
+    }
+
+    .submit-button {
+        background: #10193d;
+        font-size: 20px;
+        width: 100px;
+    }
+
+    .form input,
+    .form textarea {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: none;
+        box-sizing: border-box;
+        border: 3px solid #10193d;
+        border-radius: 20px;
+    }
+
+    .submit-button:hover {
+        background-color: #10193d;
+        color: #f8f8f8;
+    }
+
+    .form input[type='submit'] {
+        cursor: pointer;
+        color: #f8f8f8;
+    }
+
+    .flap {
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        background: transparent;
+        transform: rotateX(90deg);
+        transform-origin: bottom;
+        transition: transform 0.8s;
+        transition: top 20s ease-in-out;
+    }
+
+    .textarea-box {
+        height: 300px;
+    }
+
+    .flap.top {
+        top: 0;
+    }
+
+    .flap.bottom {
+        bottom: 0;
+    }
+
+    .envelope.closed~.sent {
+        opacity: 1;
+        display: block;
+    }
+
+    .envelope.closed .form {
+        transform: rotateX(90deg);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .envelope.closed .flap {
+        transform: rotateX(0deg);
+        visibility: hidden;
+    }
+
+    .envelope.closed {
+        position: absolute;
+        transform: translateY(-800px);
+        opacity: 0;
+    }
+
+    .sent {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2em;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 2s;
+        display: none;
+        color: #10193d;
+    }
+
+    .sent {
+        opacity: 1;
+    }
+
+    .scrolling-envelope {
+        transition: top 20s ease-in-out;
+    }
+
+    .hidden-mail {
+        display: none;
+    }
+
+    #section-contact {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .footer {
+        height: 30px;
+        width: 100%;
+        background-color: #f8f8f8;
+        border-top: 2px #10193d;
+        padding: 10px;
+    }
+
+    .copi {
+        margin-top: 5px;
+    }
+
+    /* Here Start beonmax fille */
+
+    .pdf-oppener {
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="content">
+        <div id="hidden-header">
+            <div class="social-network">
+                <a id="faceMe" href="https://www.facebook.com/sorin.rotaru.79" target="_blank">
+                    <i id="facebook-icon" class="fab fa-facebook"></i>
+                    <audio id="hoverSoundFace" src="sounds/mixkit-air-zoom-vacuum-2608.wav" preload="auto"></audio>
+                </a>
+                <a id="hoverMe" href="https://twitter.com/sorin03032839" target="_blank">
+                    <i id="twitter-icon" class="fab fa-twitter"></i>
+                    <audio id="hoverSound" src="sounds/456440__inspectorj__bird-whistling-robin-single-13.wav"
+                        preload="auto"></audio>
+                </a>
+                <a id="linkMe" href="https://www.linkedin.com/in/sorin-rotaru-55a8a013a/" target="_blank">
+                    <i id="linkedin-icon" class="fab fa-linkedin"></i>
+                    <audio id="hoverSoundLink" src="sounds/mixkit-air-zoom-vacuum-2608.wav" preload="auto"></audio>
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-list">
+                    <li><a id="hoverMeHome" href="#section-home">Home</a></li>
+                    <li><a id="hoverMeAbout" href="#section-about">About</a></li>
+                    <li><a id="hoverMeContact" href="#section-portfolio">Portfolio</a></li>
+                    <li><a id="hoverMePortfolio" href="#section-awards">Education</a></li>
+                    <li><a id="hoverMeAwards" href="#section-contact">Contact</a></li>
+
+                    <div id="toggleButton"><i class="fa-solid fa-volume-high fa-2x"></i></div>
+
+                    <audio id="hoverSoundMenu" src="sounds/399196__spiceprogram__perc-bip.wav" preload="auto"></audio>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="hamburger">
+            <div class="burger">
+                <i class="fa-solid fa-bars" id="burger-icon"></i>
+
+                <i class="fa-solid fa-xmark" id="close-icon" style="display: none;" style="padding-left: 10px;"></i>
+            </div>
+            <div class="social-network" id="social-network">
+                <div class="center-block">
+                    <a id="faceMe" href="https://www.facebook.com/sorin.rotaru.79" target="_blank">
+                        <i id="facebook-icon" class="fab fa-facebook"></i>
+                        <audio id="hoverSoundFace" src="sounds/mixkit-air-zoom-vacuum-2608.wav" preload="auto"></audio>
+                    </a>
+                    <a id="hoverMe" href="https://twitter.com/sorin03032839" target="_blank">
+                        <i id="twitter-icon" class="fab fa-twitter"></i>
+                        <audio id="hoverSound" src="sounds/456440__inspectorj__bird-whistling-robin-single-13.wav"
+                            preload="auto"></audio>
+                    </a>
+                    <a id="linkMe" href="https://www.linkedin.com/in/sorin-rotaru-55a8a013a/" target="_blank">
+                        <i id="linkedin-icon" class="fab fa-linkedin"></i>
+                        <audio id="hoverSoundLink" src="sounds/mixkit-air-zoom-vacuum-2608.wav" preload="auto"></audio>
+                    </a>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-list" id="nav-list">
+                    <li><a id="hoverMeHome" href="#section-home">Home</a></li>
+                    <li><a id="hoverMeAbout" href="#section-about">About</a></li>
+                    <li><a id="hoverMeContact" href="#section-portfolio">Portfolio</a></li>
+                    <li><a id="hoverMePortfolio" href="#section-awards">Educations</a></li>
+                    <li><a id="hoverMeAwards" href="#section-contact">Contact</a></li>
+
+                    <div id="toggleButton"><i class="fa-solid fa-volume-high fa-2x"></i></div>
+
+                    <audio id="hoverSoundMenu" src="sounds/399196__spiceprogram__perc-bip.wav" preload="auto"></audio>
+                </ul>
+            </nav>
+        </div>
+
+
+        <div id="hoverMeArrow" data-w-id="24695c93-78f2-ca45-d665-dd0cfcfb9f92" class="scroll-arrow22">
+            <div id="hoverMeScroll" class="scroll-text-container">
+                <img class="scroll-text2" src="img/Event Organizer.svg" alt="">
+                <div class="centered-i"></div>
+            </div>
+            <img src="img/arrow-red.svg" loading="lazy" alt="Scroll down arrow" class="image-31">
+        </div>
+
+        <!-- Your page content goes here -->
+        <div id="section-home" class="box">
+            <div id="delayedText" class="delay">Sorin</div>
+            <div id="delayedText1" class="delay1"></div>
+            <!-- <img class="stars" src="img/stars1.gif" alt=""> -->
+            <div id="hoverMeUp" class="scroll-circle">
+                <div class="arrow"></div>
+                <div class="scroll-text">Up</div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- <div class="experience-marquee-outer-container22"> -->
+        <!-- <div style="transform: translate3d(-101.089vw, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; will-change: transform;"
+                class="experience-marquee-container">
+                <div class="experience-set1">
+                    <h1 class="experience-title-full22">SKILLS</h1>
+                    <h1 class="stroke-text22">EXPERIENCE</h1>
+
+                    <h1 class="experience-title-full22">SKILLS</h1>
+                    <h1 class="stroke-text22">EXPERIENCE</h1>
+
+                    <h1 class="experience-title-full22">SKILLS</h1>
+                    <h1 class="stroke-text22">EXPERIENCE</h1>
+
+                    <h1 class="experience-title-full22">SKILLS</h1>
+                    <h1 class="stroke-text22">EXPERIENCE</h1>
+                </div>
+            </div> -->
+        <div class="marquee">
+            <div class="track">
+                <span class="font1">SKILLS</span>
+                <span class="font2">EXPERIENCE</span>
+                <span class="font1">SKILLS</span>
+                <span class="font2">EXPERIENCE</span>
+                <span class="font1">SKILLS</span>
+                <span class="font2">EXPERIENCE</span>
+                <span class="font1">SKILLS</span>
+                <span class="font2">EXPERIENCE</span>
+            </div>
+        </div>
+        <hr>
+        <div id="section-about" class="container">
+
+            <div class="experience-box hidden">
+
+                <p class="about-title">
+                    Hello, my name is SORIN ROTARU. I am a dedicated and experienced professional with a strong
+                    background in e-commerce and online marketplace management.
+                </p>
+                <p class="about-text">
+                    With over three years of extensive experience in product sales on Amazon, I possess a visionary
+                    and
+                    forward-thinking mindset, which are highly valued skills in my profile.
+                    <br><br class="br-none">
+                    I have gained proficiency in managing diverse digital products and utilizing the Amazon Seller
+                    Central tools. My expertise extends to efficiently overseeing Amazon businesses across multiple
+                    time
+                    zones, drawing upon my experience of successfully selling on various international Amazon
+                    platforms,
+                    including Amazon Europe, Australia, and the USA.
+                </p>
+                <div class="arrow-experience-box">
+                    <img class="arrow-imagine" src="img/arrow.svg" alt="">
+                </div>
+                <div id="circle" class="circle"></div>
+            </div>
+        </div>
+        <div class="work-marquee-outer-container">
+            <div data-w-id="f510001d-b6ff-e014-5172-ce2ee812c8f4" class="work-marquee-container">
+                <div class="work-set"
+                    style="will-change: transform; transform: translate3d(-267.022px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+                    <h1 class="work-heading">AMAZON LISTING</h1>
+                    <h1 class="work-heading">CUSTOMER SERVICE</h1>
+                    <h1 class="work-heading">AMAZON FBA</h1>
+                    <h1 class="work-heading">AMAZON TRANSPARENCY</h1>
+                    <h1 class="work-heading">ChatGPT</h1>
+                    <h1 class="work-heading">GRAMMARLY</h1>
+                    <h1 class="work-heading">CANVA</h1>
+                    <h1 class="work-heading">KEYWORDS</h1>
+                    <h1 class="work-heading">SELLER CENTRAL</h1>
+                    <h1 class="work-heading">AMZScout</h1>
+                    <h1 class="work-heading">BRAND REGISTRY</h1>
+                    <h1 class="work-heading">MARKETING</h1>
+                    <h1 class="work-heading">PPC</h1>
+                    <h1 class="work-heading">eBay</h1>
+                    <h1 class="work-heading">SHOPIFY</h1>
+                    <h1 class="work-heading">HTML</h1>
+                    <h1 class="work-heading">CSS</h1>
+                    <h1 class="work-heading">JAVASCRIPT</h1>
+                    <h1 class="work-heading">B2B CENTRAL</h1>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-portfolio" class="box2">
+            <h4 class="portfolio-title">Portfolio</h4>
+            <div class="portfolio-item">
+                <span class="toggle">➕</span>
+                <div class="ppc-box">Amazon Listings</div>
+                <div class="submenu">
+                    <div class="submenu-item">
+                        <div><a href="https://www.amazon.co.uk/dp/B0977V8MNH?ref=myi_title_dp&amp;th=1"
+                                target="_blank">1. Bike Bell Listing</a></div>
+                        <div><a href="https://www.amazon.co.uk/dp/B088G1VYQY?ref=myi_title_dp&amp;th=1"
+                                target="_blank">2. Phone Mount Listing</a></div>
+                        <div><a href="https://www.amazon.co.uk/dp/B087PK72YC?ref=myi_title_dp&amp;th=1"
+                                target="_blank">3. iPhone Case Listing</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <span class="toggle">➕</span>
+                <div class="ppc-box">Amazon Advertising/PPC Screenshots</div>
+                <div class="submenu">
+                    <div class="submenu-item to-link">
+                        <div class="padding-submenu"><a href="amazon-ppc.html" target="_blank">PPC Advertising
+                                Screenshots</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <span class="toggle">➕</span>
+                <div class="ppc-box">Amazon Store</div>
+                <div class="submenu">
+                    <div class="submenu-item to-link">
+                        <div class="padding-submenu"><a
+                                href="https://www.amazon.co.uk/stores/TerraConnect/page/BC4E7A24-D9DB-41F6-A4B2-81FF5701481A?ref_=ast_bln"
+                                target="_blank">Visit My Amazon Store</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <span class="toggle">➕</span>
+                <div class="ppc-box">How I can help you</div>
+                <div class="submenu">
+                    <div class="submenu-item">
+                        <div><a href="help.html" target="_blank">Services</a></div><br>
+                        <div><a href="cv.html" target="_blank">My - CV</a></div><br>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item border-botttom-item">
+                <span class="toggle">➕</span>
+                <div class="ppc-box">Listings on Amazon Worldwide</div>
+                <div class="submenu">
+                    <div class="submenu-item">
+                        <div><a href="https://www.amazon.com/dp/B08B4WB53Q?ref=myi_title_dp&th=1" target="_blank">1.
+                                USA</a></div>
+                        <div><a href="https://www.amazon.it/dp/B08VRNXX38?ref=myi_title_dp&th=1" target="_blank">1.
+                                Italy</a></div>
+                        <div><a href="https://www.amazon.fr/dp/B0977V8MNH?ref=myi_title_dp" target="_blank">2.
+                                France</a></div>
+                        <div><a href="https://www.amazon.com.au/dp/B08M621KBK?ref=myi_title_dp" target="_blank">4.
+                                Australia</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="section-awards" class="box3">
+            <h4 class="education-title">Education</h4>
+            <a href="beonmax.html" class="award-item html-css"><span class="readmore">Read More</span>
+                <div class="year-box year-2022 "></div>
+            </a>
+            <a href="setup.html" class="award-item amazon-setup"><span class="readmore">Read More</span>
+                <div class="year-box year-2021"></div>
+            </a>
+            <!-- <a href="#" class="award-item java-script"><span class="readmore">Read More</span></a>
+            <a href="#" class="award-item botstrap-p"><span class="readmore">Read More</span></a> -->
+            <a href="tquk.html" class="award-item tkuk"><span class="readmore">Read More</span>
+                <div class="year-box year-2022"></div>
+            </a>
+            <a href="#" class="award-item arden"><span class="readmore">Read More</span>
+                <div class="year-box year-2023"></div>
+            </a>
+        </div>
+        <hr>
+        <div id="section-contact" class="box4">
+
+            <h4 class="lets-talk">Let's Talk</h4>
+            <div class="envelope" id="envelope">
+
+                <form id="form" class="form">
+                    <label class="text-label label1" for="first_name"><span class="required"></span></label>
+                    <input class="text-box" type="text" id="first_name" name="first_name" placeholder="Full Name*"
+                        required />
+
+                    <label class="text-label label4" for="email_address"><span class="required"></span></label>
+                    <input class="text-box" type="email" id="email_address" name="email_address" placeholder="Email*"
+                        required />
+
+                    <textarea id="message" class="textarea-box" placeholder="Message*" required></textarea>
+
+                    <input class="submit-button" type="submit" value="Send" />
+                </form>
+
+                <div class="flap top"></div>
+                <div class="flap bottom"></div>
+
+            </div>
+            <div class="sent" id="sent">MESSAGE SENT!</div>
+        </div>
+
+        <hr>
+        <div class="footer">
+            <p class="copi">
+                Copyright Sorin Rotaru 2023
+            </p>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/1ea935c559.js" crossorigin="anonymous"></script>
+    <script src="script.js" type="text/javascript"></script>
+
+    <script>
+        // 16. Disable zooming on mobile devices for the form
+        function disableZoomForForm() {
+            var viewportMetaTag = document.querySelector('meta[name="viewport"]');
+            viewportMetaTag.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
+        }
+
+
+        disableZoomForForm();
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("2eh_xiMVFCJY4U9yP"); // Replace it with your EmailJS user ID
+        })();
+    </script>
+
+    <script>
+
+    </script>
+
+</body>
+
+</html>
