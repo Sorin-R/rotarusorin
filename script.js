@@ -533,36 +533,77 @@ function showOnScroll() {
 window.addEventListener('scroll', showOnScroll);
 
 document.addEventListener('DOMContentLoaded', function () {
-  const portfolioItems = document.querySelectorAll('.portfolio-item');
+  const portfolioItems = document.querySelectorAll(
+    '#section-portfolio .portfolio-item'
+  );
+
+  function closePortfolioItem(item) {
+    const submenu = item.querySelector('.submenu');
+    const submenuLinks = item.querySelectorAll('.submenu a');
+
+    item.classList.remove('active');
+    item.setAttribute('aria-expanded', 'false');
+    submenuLinks.forEach(link => link.setAttribute('tabindex', '-1'));
+
+    if (submenu) {
+      submenu.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  function openPortfolioItem(item) {
+    const submenu = item.querySelector('.submenu');
+    const submenuLinks = item.querySelectorAll('.submenu a');
+
+    portfolioItems.forEach(closePortfolioItem);
+    item.classList.add('active');
+    item.setAttribute('aria-expanded', 'true');
+    submenuLinks.forEach(link => link.removeAttribute('tabindex'));
+
+    if (submenu) {
+      submenu.setAttribute('aria-hidden', 'false');
+    }
+  }
 
   portfolioItems.forEach(item => {
     const submenu = item.querySelector('.submenu');
-    const toggle = item.querySelector('.toggle');
-    submenu.style.display = 'none'; // Set initial style here
-    toggle.addEventListener('click', function (event) {
-      event.stopPropagation();
 
-      // Toggle the visibility of the sub-menu when the toggle button is clicked
-      if (submenu.style.display === 'none') {
-        submenu.style.display = 'block';
-        toggle.style.transform = 'rotate(45deg)'; // Add this line
-      } else {
-        submenu.style.display = 'none';
-        toggle.style.transform = 'rotate(0deg)'; // And this line
-      }
-    });
+    item.setAttribute('aria-expanded', 'false');
+    item.setAttribute('tabindex', '0');
 
-    item.addEventListener('click', function (event) {
-      // Only toggle if we clicked the item but not the toggle button or submenu links
-      if (!event.target.matches('.toggle, .submenu-item a')) {
-        if (submenu.style.display === 'none') {
-          submenu.style.display = 'block';
-          toggle.style.transform = 'rotate(45deg)'; // And this line
-        } else {
-          submenu.style.display = 'none';
-          toggle.style.transform = 'rotate(0deg)'; // And this line
-        }
+    if (submenu) {
+      submenu.setAttribute('aria-hidden', 'true');
+    }
+
+    item
+      .querySelectorAll('.submenu a')
+      .forEach(link => link.setAttribute('tabindex', '-1'));
+
+    function togglePortfolioItem(event) {
+      if (event.target.closest('.submenu')) {
+        return;
       }
+
+      if (item.classList.contains('active')) {
+        closePortfolioItem(item);
+        return;
+      }
+
+      openPortfolioItem(item);
+    }
+
+    item.addEventListener('click', togglePortfolioItem);
+
+    item.addEventListener('keydown', function (event) {
+      if (event.key !== 'Enter' && event.key !== ' ') {
+        return;
+      }
+
+      if (event.target.closest('.submenu')) {
+        return;
+      }
+
+      event.preventDefault();
+      togglePortfolioItem(event);
     });
   });
 });
