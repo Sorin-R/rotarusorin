@@ -114,6 +114,14 @@ menuLinks.forEach(link => {
   });
 });
 
+const getInTouchButton = document.getElementById('getInTouchButton');
+
+if (getInTouchButton) {
+  getInTouchButton.addEventListener('click', () => {
+    scrollToSection('section-contact');
+  });
+}
+
 // 7. Once the document content has been fully loaded
 document.addEventListener('DOMContentLoaded', function () {
   // Array of section positions
