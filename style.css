@@ -336,7 +336,7 @@ hr {
   display: flex;
   flex-wrap: wrap;
   gap: 50px;
-  padding: 20px;
+  padding: 30px;
   padding-bottom: 70px;
   justify-content: center;
   align-items: center;
@@ -363,7 +363,7 @@ hr {
 .about-title {
   border: solid 1px #10193d;
   border-radius: 10px;
-  padding: 20px;
+  padding: 30px;
   /* border-left: #10193d 10px solid;
   border-bottom: solid 10px #10193d; */
   box-shadow: #10193d 0px 0px 5px;
@@ -450,7 +450,7 @@ hr {
 
 .circle img {
   border-radius: 50%;
-  padding: 20px;
+  padding: 30px;
   width: 20vw;
   height: 20vw;
   min-width: 250px;
@@ -841,12 +841,14 @@ hr {
 }
 
 .award-item {
+  padding: 30px;
+  box-sizing: border-box;
   flex-basis: calc(33.33% - 20px);
-  height: 240px;
+  height: 280px;
   margin: 20px;
   background-color: #f8f8f8;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 75%;
   background-position: center;
   box-shadow: 0 0 5px #10193d;
   color: #10193d;
@@ -884,25 +886,25 @@ hr {
 
 .html-css {
   background-image: url(/img/beonmax.svg);
-  background-size: contain;
+  background-size: 75%;
   box-shadow: #000000 0px 0px 10px;
 }
 
 .amazon-setup {
   background-image: url(/img/setup.svg);
-  background-size: contain;
+  background-size: 75%;
   box-shadow: #000000 0px 0px 10px;
 }
 
 .tkuk {
   background-image: url(/img/tquk.svg);
-  background-size: contain;
+  background-size: 75%;
   box-shadow: #000000 0px 0px 10px;
 }
 
 .arden {
   background-image: url(/img/ardenlogo.svg);
-  background-size: contain;
+  background-size: 75%;
   box-shadow: #000000 0px 0px 10px;
 }
 
@@ -999,218 +1001,232 @@ hr {
   font-size: 30px;
 }
 
+
+
+/* Contact Section */
 .box4 {
   width: 100%;
-  height: 100vh;
-  background-color: #e4c1f9;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e4c1f9 0%, #f0d9ff 100%);
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .lets-talk {
   text-align: center;
-  padding: 10px;
-  font-size: 100px;
+  font-size: 3.5rem;
   font-weight: 900;
   color: #10193d;
-  position: absolute;
-  margin-top: -655px;
+  margin-bottom: 50px;
 }
 
 .envelope {
-  width: 900px;
-  height: 500px;
-  background-image: url(/img/envelope.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(16, 25, 61, 0.15);
+  overflow: visible;
+  padding: 0;
   position: relative;
   perspective: 1000px;
-  transition: transform 20s, opacity 3s;
-  transform-style: preserve-3d;
-  border-radius: 25px;
-  box-shadow: #000000 0px 0px 5px;
 }
 
 .form {
-  position: absolute;
+  padding: 40px;
   width: 100%;
-  height: 100%;
-  padding: 20px;
-  background: #f8f8f8;
   box-sizing: border-box;
-  transform: rotateX(0deg);
-  transform-origin: bottom;
-  transition: transform 0.8s, opacity 0.8s;
-  border: 3px solid #10193d;
-  border-radius: 20px;
-  opacity: 1;
+  position: relative;
+  z-index: 5;
+  transition: opacity 0.3s ease;
 }
 
-.submit-button {
-  background: #10193d;
-  font-size: 20px;
-  width: 100px;
+.form label {
+  display: none;
 }
 
 .form input,
 .form textarea {
   width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: none;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 2px solid #e4c1f9;
+  border-radius: 10px;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
   box-sizing: border-box;
-  border: 3px solid #10193d;
-  border-radius: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #10193d;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: #999;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: #10193d;
+  box-shadow: 0 0 0 3px rgba(232, 193, 249, 0.5);
+}
+
+.textarea-box {
+  resize: vertical;
+  min-height: 150px;
+  max-height: 300px;
+  font-family: 'Arial', sans-serif;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #10193d 0%, #1a2454 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Arial', sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 10px;
 }
 
 .submit-button:hover {
-  background-color: #10193d;
-  color: #f8f8f8;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(16, 25, 61, 0.3);
 }
 
-.form input[type='submit'] {
-  cursor: pointer;
-  color: #f8f8f8;
+.submit-button:active {
+  transform: translateY(0);
 }
 
+/* Envelope Flaps */
 .flap {
   position: absolute;
   width: 100%;
   height: 50%;
-  background: transparent;
-  transform: rotateX(90deg);
-  transform-origin: bottom;
-  transition: transform 0.8s;
-  transition: top 20s ease-in-out;
-}
-
-.textarea-box {
-  height: 300px;
+  background: linear-gradient(135deg, #10193d 0%, #1a2454 100%);
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform 0.8s ease;
+  border-radius: 20px 20px 0 0;
+  z-index: 10;
+  left: 0;
 }
 
 .flap.top {
   top: 0;
+  border-radius: 20px 20px 0 0;
 }
 
 .flap.bottom {
   bottom: 0;
+  transform-origin: bottom center;
+  border-radius: 0 0 20px 20px;
 }
 
-.envelope.closed ~ .sent {
-  opacity: 1;
-  display: block;
-}
-
+/* Envelope closed state */
 .envelope.closed .form {
-  transform: rotateX(90deg);
   opacity: 0;
-  visibility: hidden;
+  pointer-events: none;
 }
 
-.envelope.closed .flap {
-  transform: rotateX(0deg);
-  visibility: hidden;
+.envelope.closed .flap.top {
+  transform: rotateX(-180deg);
 }
 
-.envelope.closed {
-  position: absolute;
-  transform: translateY(-800px);
-  opacity: 0;
+.envelope.closed .flap.bottom {
+  transform: rotateX(180deg);
 }
 
+/* Sent message */
 .sent {
-  position: fixed;
+  display: none;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2em;
   text-align: center;
-  opacity: 0;
-  transition: opacity 2s;
-  display: none;
   color: #10193d;
+  font-size: 2.5rem;
+  font-weight: 900;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 15;
+  width: 100%;
 }
 
-.sent {
+.envelope.closed ~ .sent {
+  display: block;
   opacity: 1;
 }
 
-.scrolling-envelope {
-  transition: top 20s ease-in-out;
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+  .box4 {
+    padding: 40px 15px;
+    min-height: auto;
+  }
+
+  .lets-talk {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+
+  .envelope {
+    max-width: 100%;
+  }
+
+  .form {
+    padding: 30px;
+  }
+
+  .form input,
+  .form textarea {
+    padding: 12px;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .submit-button {
+    padding: 12px;
+    font-size: 16px;
+  }
 }
 
-.hidden-mail {
-  display: none;
-}
+@media only screen and (max-width: 480px) {
+  .box4 {
+    padding: 30px 10px;
+  }
 
-#section-contact {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
+  .lets-talk {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
 
-.footer {
-  height: 50px;
-  width: 100%;
-  background-color: #f8f8f8;
-  border-top: 2px #10193d;
-  padding: 10px;
-}
+  .form {
+    padding: 20px;
+  }
 
-.copi {
-  margin-top: 5px;
-}
+  .form input,
+  .form textarea {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
 
-/* Here Start beonmax fille */
+  .textarea-box {
+    min-height: 120px;
+  }
 
-.pdf-oppener {
-  display: none;
-}
-
-.beonmax-page {
-  width: 100%;
-  height: 105vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: cornflowerblue;
-  position: fixed;
-}
-
-.beonmax-img {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 90vh;
-}
-
-.beonmax-img img {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.beonmax-img img.zoomed {
-  transform: scale(1.5);
-}
-
-.beonmax-page-x {
-  width: auto;
-  height: auto;
-  padding-top: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: cornflowerblue;
-}
-
-.beonmax-img-x {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: auto;
+  .submit-button {
+    padding: 12px;
+    font-size: 16px;
+  }
 }
