@@ -1058,7 +1058,7 @@ hr {
   display: none;
 }
 
-.form input,
+.form input:not(.submit-button),
 .form textarea {
   width: 100%;
   padding: 15px;
@@ -1092,22 +1092,29 @@ hr {
   font-family: 'Arial', sans-serif;
 }
 
-.submit-button {
-  width: 100%;
-  padding: 15px;
-  background: linear-gradient(135deg, #10193d 0%, #1a2454 100%);
+input.submit-button,
+.form input.submit-button,
+input[type="submit"].submit-button {
+  width: 100% !important;
+  padding: 15px !important;
+  background: linear-gradient(135deg, #10193d 0%, #1a2454 100%) !important;
+  background-color: #10193d !important;
   color: #ffffff !important;
-  border: none;
-  border-radius: 10px;
-  font-size: 18px;
-  font-weight: 600;
-  font-family: 'Arial', sans-serif;
-  cursor: pointer;
+  border: none !important;
+  border-radius: 10px !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  font-family: 'Arial', sans-serif !important;
+  cursor: pointer !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-top: 10px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  margin-top: 10px !important;
+  margin-bottom: 0 !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  display: block !important;
+  text-align: center !important;
+  text-shadow: none !important;
 }
 
 .submit-button:hover {
@@ -1173,7 +1180,7 @@ hr {
     padding: 30px;
   }
 
-  .form input,
+  .form input:not(.submit-button),
   .form textarea {
     padding: 12px;
     font-size: 16px;
@@ -1208,7 +1215,7 @@ hr {
     padding: 20px;
   }
 
-  .form input,
+  .form input:not(.submit-button),
   .form textarea {
     padding: 10px;
     font-size: 16px;
