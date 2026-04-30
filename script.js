@@ -409,11 +409,71 @@ document.addEventListener('DOMContentLoaded', function () {
   const sectionIds = [
     'section-home',
     'section-about',
-    'section-contact',
     'section-portfolio',
     'section-awards',
+    'section-contact',
   ];
-  const colors = ['#e4c1f9', '#f8f8f8', '', '#f8f8f8', '#e4c1f9'];
+  const fallbackSectionColors = {
+    'section-home': '#e4c1f9',
+    'section-about': '#f8f8f8',
+    'section-portfolio': '#e4c1f9',
+    'section-awards': '#f8f8f8',
+    'section-contact': '#e4c1f9',
+  };
+  const sections = sectionIds
+    .map(sectionId => document.getElementById(sectionId))
+    .filter(Boolean);
+
+  function getSectionBackground(section) {
+    let element = section;
+
+    while (element && element !== document.documentElement) {
+      const backgroundColor = window.getComputedStyle(element).backgroundColor;
+
+      if (
+        backgroundColor &&
+        backgroundColor !== 'rgba(0, 0, 0, 0)' &&
+        backgroundColor !== 'transparent'
+      ) {
+        return backgroundColor;
+      }
+
+      element = element.parentElement;
+    }
+
+    return fallbackSectionColors[section.id] || '#f8f8f8';
+  }
+
+  function getCurrentSection() {
+    const burgerRect = burger.getBoundingClientRect();
+    const probeY = burgerRect.top + burgerRect.height / 2;
+    const sectionBehindBurger = sections.find(section => {
+      const sectionRect = section.getBoundingClientRect();
+
+      return sectionRect.top <= probeY && sectionRect.bottom > probeY;
+    });
+
+    if (sectionBehindBurger) {
+      return sectionBehindBurger;
+    }
+
+    return sections.reduce((currentSection, section) => {
+      return section.getBoundingClientRect().top <= probeY
+        ? section
+        : currentSection;
+    }, sections[0]);
+  }
+
+  function updateBurgerBackground() {
+    const currentSection = getCurrentSection();
+    const currentColor = getSectionBackground(currentSection);
+
+    burger.style.backgroundColor = currentColor;
+    navList.style.backgroundColor = currentColor;
+    hamburger.style.backgroundColor = hamburger.classList.contains('active')
+      ? currentColor
+      : '';
+  }
 
   burgerIcon.addEventListener('click', function () {
     // Set hamburger and other elements to active state on burger click
@@ -426,6 +486,7 @@ document.addEventListener('DOMContentLoaded', function () {
     );
     closeIcon.style.display = 'block';
     body.style.overflow = 'hidden'; // Disable scrolling
+    updateBurgerBackground();
   });
 
   function closeMenu() {
@@ -437,6 +498,7 @@ document.addEventListener('DOMContentLoaded', function () {
     [burgerIcon, delayedText].forEach(el => (el.style.display = 'block'));
     [closeIcon, delayedText1].forEach(el => (el.style.display = 'none'));
     body.style.overflow = 'auto'; // Enable scrolling
+    updateBurgerBackground();
   }
 
   closeIcon.addEventListener('click', closeMenu);
@@ -444,12 +506,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Close the menu when any nav link is clicked
   navLinks.forEach(link => link.addEventListener('click', closeMenu));
 
-  window.addEventListener('scroll', function () {
-    // Calculate the current section index based on scroll position
-    const sectionIndex = Math.floor(window.scrollY / window.innerHeight);
-    // Use the section index to set the burger background color
-    burger.style.backgroundColor = colors[sectionIndex] || '#f8f8f8'; // Default color
-  });
+  updateBurgerBackground();
+  window.addEventListener('scroll', updateBurgerBackground);
+  window.addEventListener('resize', updateBurgerBackground);
 });
 
 // 15. Obtain reference to the required DOM elements only onces
