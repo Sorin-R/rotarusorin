@@ -694,11 +694,9 @@ form.addEventListener('submit', function (event) {
   };
 
   emailjs.send('service_sye18cs', 'template_gu01c8s', params).then(
-    function (res) {
-      alert('Success!');
-    },
+    function (res) {},
     function (error) {
-      alert('Error! ' + error);
+      console.error('Email send error:', error);
     }
   );
 });
