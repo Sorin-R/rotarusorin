@@ -120,15 +120,41 @@
         flex-direction: column;
     }
 
-    .service-card:nth-child(1) { animation-delay: 0.05s; }
-    .service-card:nth-child(2) { animation-delay: 0.15s; }
-    .service-card:nth-child(3) { animation-delay: 0.25s; }
-    .service-card:nth-child(4) { animation-delay: 0.35s; }
-    .service-card:nth-child(5) { animation-delay: 0.45s; }
-    .service-card:nth-child(6) { animation-delay: 0.55s; }
-    .service-card:nth-child(7) { animation-delay: 0.65s; }
-    .service-card:nth-child(8) { animation-delay: 0.75s; }
-    .service-card:nth-child(9) { animation-delay: 0.85s; }
+    .service-card:nth-child(1) {
+        animation-delay: 0.05s;
+    }
+
+    .service-card:nth-child(2) {
+        animation-delay: 0.15s;
+    }
+
+    .service-card:nth-child(3) {
+        animation-delay: 0.25s;
+    }
+
+    .service-card:nth-child(4) {
+        animation-delay: 0.35s;
+    }
+
+    .service-card:nth-child(5) {
+        animation-delay: 0.45s;
+    }
+
+    .service-card:nth-child(6) {
+        animation-delay: 0.55s;
+    }
+
+    .service-card:nth-child(7) {
+        animation-delay: 0.65s;
+    }
+
+    .service-card:nth-child(8) {
+        animation-delay: 0.75s;
+    }
+
+    .service-card:nth-child(9) {
+        animation-delay: 0.85s;
+    }
 
     @keyframes cardReveal {
         to {
@@ -406,30 +432,40 @@
                 <i class="fa-solid fa-bars" id="burger-icon"></i>
                 <i class="fa-solid fa-xmark" id="close-icon" style="display: none;"></i>
             </div>
-            <div class="social-network" id="social-network">
-                <div class="center-block">
-                    <a href="https://www.facebook.com/sorin.rotaru.79" target="_blank">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="https://twitter.com/sorinrotaru10" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/sorin-rotaru-55a8a013a/" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </div>
-            </div>
             <nav>
                 <ul class="nav-list" id="nav-list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#section-about">About</a></li>
-                    <li><a href="index.html#section-portfolio">Portfolio</a></li>
-                    <li><a href="index.html#section-awards">Education</a></li>
-                    <li><a href="index.html#section-contact">Contact</a></li>
+                    <li><a id="hoverMeHome" href="index.html#section-home">Home</a></li>
+                    <li><a id="hoverMeAbout" href="index.html#section-about">About</a></li>
+                    <li><a id="hoverMePortfolio" href="index.html#section-portfolio">Portfolio</a></li>
+                    <li><a id="hoverMeAwards" href="index.html#section-awards">Education</a></li>
+                    <li><a id="hoverMeContact" href="index.html#section-contact">Contact</a></li>
+
+                    <div id="toggleButton"><i class="fa-solid fa-volume-high fa-2x"></i></div>
+
+                    <div class="social-network" id="social-network">
+                        <div class="center-block">
+                            <a id="faceMe" href="https://www.facebook.com/sorin.rotaru.79" target="_blank">
+                                <i id="facebook-icon" class="fab fa-facebook"></i>
+                                <audio id="hoverSoundFace" src="sounds/mixkit-air-zoom-vacuum-2608.wav"
+                                    preload="auto"></audio>
+                            </a>
+                            <a id="hoverMe" href="https://twitter.com/sorinrotaru10" target="_blank">
+                                <i id="twitter-icon" class="fab fa-twitter"></i>
+                                <audio id="hoverSound"
+                                    src="sounds/456440__inspectorj__bird-whistling-robin-single-13.wav"
+                                    preload="auto"></audio>
+                            </a>
+                            <a id="linkMe" href="https://www.linkedin.com/in/sorin-rotaru-55a8a013a/" target="_blank">
+                                <i id="linkedin-icon" class="fab fa-linkedin"></i>
+                                <audio id="hoverSoundLink" src="sounds/mixkit-air-zoom-vacuum-2608.wav"
+                                    preload="auto"></audio>
+                            </a>
+                        </div>
+                    </div>
+                    <audio id="hoverSoundMenu" src="sounds/399196__spiceprogram__perc-bip.wav" preload="auto"></audio>
                 </ul>
             </nav>
         </div>
-
         <div id="hoverMeUp" class="scroll-circle">
             <div class="arrow"></div>
             <div class="scroll-text">Up</div>
@@ -568,7 +604,8 @@
                     <div class="service-icon-wrap"><i class="fa-brands fa-shopify"></i></div>
                     <h3 class="service-title">Personalized Shopify Store Build</h3>
                     <p class="service-text">
-                        Visually appealing storefronts with full catalog management, SEO, payment & shipping integration,
+                        Visually appealing storefronts with full catalog management, SEO, payment & shipping
+                        integration,
                         mobile optimization, and app integrations to maximize conversions.
                     </p>
                     <a class="service-cta" href="index.html#section-contact">
@@ -597,13 +634,16 @@
                         <h3 class="footer-logo">Sorin Rotaru</h3>
                         <p class="footer-tagline">Building digital experiences with passion and precision.</p>
                         <div class="footer-social">
-                            <a id="faceMeFooter" href="https://www.facebook.com/sorin.rotaru.79" target="_blank" aria-label="Facebook">
+                            <a id="faceMeFooter" href="https://www.facebook.com/sorin.rotaru.79" target="_blank"
+                                aria-label="Facebook">
                                 <i id="facebook-icon-footer" class="fab fa-facebook footer-social-icon"></i>
                             </a>
-                            <a id="hoverMeFooter" href="https://twitter.com/sorin03032839" target="_blank" aria-label="Twitter">
+                            <a id="hoverMeFooter" href="https://twitter.com/sorin03032839" target="_blank"
+                                aria-label="Twitter">
                                 <i id="twitter-icon-footer" class="fab fa-twitter footer-social-icon"></i>
                             </a>
-                            <a id="linkMeFooter" href="https://www.linkedin.com/in/sorin-rotaru-55a8a013a/" target="_blank" aria-label="LinkedIn">
+                            <a id="linkMeFooter" href="https://www.linkedin.com/in/sorin-rotaru-55a8a013a/"
+                                target="_blank" aria-label="LinkedIn">
                                 <i id="linkedin-icon-footer" class="fab fa-linkedin footer-social-icon"></i>
                             </a>
                         </div>
@@ -633,7 +673,7 @@
                     <div class="footer-col">
                         <h4 class="footer-heading">Get in Touch</h4>
                         <ul class="footer-contact">
-                            <li><i class="fa-solid fa-envelope"></i><span>info@rotarusorin.com</span></li>
+                            <li><i class="fa-solid fa-envelope"></i><span>sorin15121978@gmail.com</span></li>
                             <li><i class="fa-solid fa-location-dot"></i><span>United Kingdom</span></li>
                             <li><i class="fa-solid fa-clock"></i><span>Available worldwide</span></li>
                         </ul>
@@ -650,5 +690,3 @@
     <script src="https://kit.fontawesome.com/1ea935c559.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
-
-</html>

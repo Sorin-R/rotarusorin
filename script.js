@@ -482,8 +482,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateBurgerBackground() {
         const currentSection = getCurrentSection();
-        if (!currentSection) return;
-        const currentColor = getSectionBackground(currentSection);
+        const currentColor = currentSection
+            ? getSectionBackground(currentSection)
+            : '#f8f8f8';
         const isActive = hamburger && hamburger.classList.contains('active');
 
         if (burger)
