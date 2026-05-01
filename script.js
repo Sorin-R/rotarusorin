@@ -65,10 +65,13 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // Event listener for click on scroll-circle
-document.querySelector('.scroll-circle').addEventListener('click', () => {
-  // Smooth scroll to top when the scroll-circle is clicked
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+const _scrollCircle = document.querySelector('.scroll-circle');
+if (_scrollCircle) {
+  _scrollCircle.addEventListener('click', () => {
+    // Smooth scroll to top when the scroll-circle is clicked
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 // 3. Select all elements with the class 'work-heading'
 const headings = document.querySelectorAll('.work-heading');
@@ -130,24 +133,27 @@ document.addEventListener('DOMContentLoaded', function () {
   ).map(section => section.offsetTop);
 
   // Click event for .scroll-arrow22
-  document.querySelector('.scroll-arrow22').addEventListener('click', () => {
-    // Get current scroll position
-    const scrollPosition =
-      window.pageYOffset || document.documentElement.scrollTop;
+  const scrollArrow22 = document.querySelector('.scroll-arrow22');
+  if (scrollArrow22) {
+    scrollArrow22.addEventListener('click', () => {
+      // Get current scroll position
+      const scrollPosition =
+        window.pageYOffset || document.documentElement.scrollTop;
 
-    // Find the next section
-    const nextSectionIndex = sectionPositions.findIndex(
-      position => position > scrollPosition
-    );
+      // Find the next section
+      const nextSectionIndex = sectionPositions.findIndex(
+        position => position > scrollPosition
+      );
 
-    // Scroll to the next section if it exists
-    if (nextSectionIndex !== -1) {
-      window.scrollTo({
-        top: sectionPositions[nextSectionIndex],
-        behavior: 'smooth', // Smooth scroll
-      });
-    }
-  });
+      // Scroll to the next section if it exists
+      if (nextSectionIndex !== -1) {
+        window.scrollTo({
+          top: sectionPositions[nextSectionIndex],
+          behavior: 'smooth', // Smooth scroll
+        });
+      }
+    });
+  }
 });
 
 // 8. List of icon IDs
@@ -286,8 +292,8 @@ const hoverSoundMenu = document.getElementById('hoverSoundMenu');
 const hoverSound = document.getElementById('hoverSound');
 const hoverSoundLink = document.getElementById('hoverSoundLink');
 const hoverSoundFace = document.getElementById('hoverSoundFace');
-const toggleButtonIcon =
-  document.getElementById('toggleButton').firstElementChild;
+const _toggleButton = document.getElementById('toggleButton');
+const toggleButtonIcon = _toggleButton ? _toggleButton.firstElementChild : null;
 
 let soundEnabled = true;
 
@@ -345,7 +351,7 @@ bindClickEvents([
 ]);
 
 // Bind toggle button click event
-document.getElementById('toggleButton').addEventListener('click', toggleSound);
+if (_toggleButton) _toggleButton.addEventListener('click', toggleSound);
 
 // 12......
 document.addEventListener('DOMContentLoaded', () => {
@@ -446,6 +452,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function getCurrentSection() {
+    if (!burger || !sections.length) return null;
     const burgerRect = burger.getBoundingClientRect();
     const probeY = burgerRect.top + burgerRect.height / 2;
     const sectionBehindBurger = sections.find(section => {
@@ -467,22 +474,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateBurgerBackground() {
     const currentSection = getCurrentSection();
+    if (!currentSection) return;
     const currentColor = getSectionBackground(currentSection);
 
-    burger.style.backgroundColor = currentColor;
-    navList.style.backgroundColor = currentColor;
-    hamburger.style.backgroundColor = hamburger.classList.contains('active')
-      ? currentColor
-      : '';
+    if (burger) burger.style.backgroundColor = currentColor;
+    if (navList) navList.style.backgroundColor = currentColor;
+    if (hamburger) {
+      hamburger.style.backgroundColor = hamburger.classList.contains('active')
+        ? currentColor
+        : '';
+    }
+  }
+
+  if (!hamburger || !burgerIcon || !closeIcon || !navList) {
+    return;
   }
 
   burgerIcon.addEventListener('click', function () {
     // Set hamburger and other elements to active state on burger click
-    [hamburger, navList, socialNetwork].forEach(el =>
+    [hamburger, navList, socialNetwork].filter(Boolean).forEach(el =>
       el.classList.add('active')
     );
     // Toggle visibility of burger, close icons, and delayed texts
-    [burgerIcon, delayedText, delayedText1, scrollCircle].forEach(
+    [burgerIcon, delayedText, delayedText1, scrollCircle].filter(Boolean).forEach(
       el => (el.style.display = 'none')
     );
     closeIcon.style.display = 'block';
@@ -492,12 +506,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function closeMenu() {
     // Reset hamburger and other elements to non-active state on close
-    [hamburger, navList, socialNetwork].forEach(el =>
+    [hamburger, navList, socialNetwork].filter(Boolean).forEach(el =>
       el.classList.remove('active')
     );
     // Toggle visibility of burger, close icons, and delayed texts
-    [burgerIcon, delayedText].forEach(el => (el.style.display = 'block'));
-    [closeIcon, delayedText1].forEach(el => (el.style.display = 'none'));
+    [burgerIcon, delayedText].filter(Boolean).forEach(el => (el.style.display = 'block'));
+    [closeIcon, delayedText1].filter(Boolean).forEach(el => (el.style.display = 'none'));
     body.style.overflow = 'auto'; // Enable scrolling
     updateBurgerBackground();
   }
