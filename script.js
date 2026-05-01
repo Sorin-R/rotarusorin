@@ -702,25 +702,29 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // EMAIL Get the form element
-const form = document.getElementById('form');
+const _emailForm = document.getElementById('form');
 
 // Listen to form submit event
-form.addEventListener('submit', function (event) {
-  event.preventDefault();
+if (_emailForm) {
+  _emailForm.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-  let params = {
-    from_name: document.getElementById('first_name').value,
-    email_address: document.getElementById('email_address').value,
-    message: document.getElementById('message').value,
-  };
+    let params = {
+      from_name: document.getElementById('first_name').value,
+      email_address: document.getElementById('email_address').value,
+      message: document.getElementById('message').value,
+    };
 
-  emailjs.send('service_sye18cs', 'template_gu01c8s', params).then(
-    function (res) {},
-    function (error) {
-      console.error('Email send error:', error);
+    if (typeof emailjs !== 'undefined') {
+      emailjs.send('service_sye18cs', 'template_gu01c8s', params).then(
+        function (res) {},
+        function (error) {
+          console.error('Email send error:', error);
+        }
+      );
     }
-  );
-});
+  });
+}
 
 // Footer year auto-update
 document.addEventListener('DOMContentLoaded', function () {
