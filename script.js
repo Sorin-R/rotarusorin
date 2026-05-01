@@ -524,8 +524,13 @@ document.addEventListener('DOMContentLoaded', function () {
   function handleFormSubmit(event) {
     event.preventDefault();
     envelope.classList.add('closed');
-    sent.style.display = 'block';
-    letsTalk.style.display = 'none';
+    if (letsTalk) letsTalk.style.display = 'none';
+    // Reset after 6 seconds so user can submit again
+    setTimeout(() => {
+      envelope.classList.remove('closed');
+      if (letsTalk) letsTalk.style.display = 'block';
+      if (form) form.reset();
+    }, 6000);
   }
 
   // Function to handle contact form submission
