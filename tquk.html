@@ -134,6 +134,7 @@
         background: linear-gradient(90deg, #10193d 0%, #9b6fc4 50%, #e4c1f9 100%);
     }
 
+    .doc-card object,
     .doc-card embed,
     .doc-card iframe {
         width: 100%;
@@ -162,6 +163,12 @@
         box-shadow: 0 8px 20px rgba(16, 25, 61, 0.25);
     }
 
+    .doc-cta-secondary {
+        background: #ffffff;
+        color: #10193d;
+        border: 2px solid #10193d;
+    }
+
     .doc-cta:hover {
         transform: translateY(-3px);
         box-shadow: 0 12px 30px rgba(155, 111, 196, 0.4);
@@ -178,6 +185,10 @@
     }
 
     .doc-cta-wrap {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
         text-align: center;
         margin-top: 25px;
     }
@@ -252,6 +263,7 @@
         .doc-card {
             padding: 20px;
         }
+        .doc-card object,
         .doc-card embed,
         .doc-card iframe {
             height: 700px;
@@ -345,6 +357,7 @@
         <div id="hoverMeUp" class="scroll-circle">
             <div class="arrow"></div>
             <div class="scroll-text">Up</div>
+        </div>
 
         <section class="doc-hero">
             <span class="doc-eyebrow">Education</span>
@@ -355,17 +368,22 @@
 
         <section class="doc-content-wrap">
             <div class="doc-card">
-                <embed src="PDF/tquk.pdf" type="application/pdf" />
+                <object data="PDF/tquk.pdf" type="application/pdf" title="TQUK Certification PDF">
+                    <p>Your browser cannot display the PDF inline. Use the buttons below to open or download it.</p>
+                </object>
                 <div class="doc-cta-wrap">
                     <a class="doc-cta" href="PDF/tquk.pdf" target="_blank">
                         <i class="fa-solid fa-file-pdf"></i>
                         <span>Open Full PDF</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
+                    <a class="doc-cta doc-cta-secondary" href="PDF/tquk.pdf" download="TQUK-Certification.pdf">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Download TQUK PDF</span>
+                    </a>
                 </div>
             </div>
         </section>
-        </div>
 
         <footer class="footer">
             <div class="footer-bg-shape"></div>
@@ -401,7 +419,7 @@
                     <div class="footer-col">
                         <h4 class="footer-heading">Get in Touch</h4>
                         <ul class="footer-contact">
-                            <li><i class="fa-solid fa-envelope"></i><span>sorin15121978@gmail.com</span></li>
+                            <li><i class="fa-solid fa-envelope"></i><span>info@rotarusorin.com</span></li>
                             <li><i class="fa-solid fa-location-dot"></i><span>United Kingdom</span></li>
                             <li><i class="fa-solid fa-clock"></i><span>Available worldwide</span></li>
                         </ul>

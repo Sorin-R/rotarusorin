@@ -20,51 +20,488 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mobile-styles.css">
-    <title>Sorin Rotaru</title>
+    <title>Customer Reviews | Sorin Rotaru</title>
 </head>
 <style>
     .container {
         display: none;
     }
 
-    .review-button {
-        display: flex;
-        position: absolute;
-        margin-bottom: -30%;
+    body.reviews-page {
+        background: #f7f4fb;
+        color: #10193d;
+    }
+
+    .reviews-page .content {
+        background: #f7f4fb;
+    }
+
+    .reviews-page #section-home {
+        min-height: auto;
+        height: auto;
+        padding: 150px 24px 90px;
+        background:
+            linear-gradient(90deg, rgba(16, 25, 61, 0.06) 1px, transparent 1px),
+            linear-gradient(180deg, rgba(16, 25, 61, 0.06) 1px, transparent 1px),
+            linear-gradient(135deg, #fff7e8 0%, #f7f4fb 46%, #e7fbfa 100%);
+        background-size: 42px 42px, 42px 42px, auto;
+        display: block;
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .reviews-shell {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(380px, 1.05fr);
+        gap: 42px;
+        align-items: center;
+    }
+
+    .review-intro {
+        position: relative;
+        z-index: 1;
+    }
+
+    .review-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 18px;
+        padding: 8px 14px;
+        color: #10193d;
+        background: #ffffff;
+        border: 1px solid rgba(16, 25, 61, 0.12);
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        box-shadow: 0 10px 30px rgba(16, 25, 61, 0.08);
+    }
+
+    .review-eyebrow i {
+        color: #ef7b45;
+    }
+
+    .review-title {
+        max-width: 620px;
+        margin: 0 0 22px;
+        color: #10193d;
+        font-size: clamp(3rem, 6vw, 6.4rem);
+        line-height: 0.95;
+        font-weight: 900;
+        letter-spacing: 0;
+    }
+
+    .review-copy {
+        max-width: 570px;
+        margin: 0 0 30px;
+        color: #39415f;
+        font-size: 1.08rem;
+        line-height: 1.75;
+    }
+
+    .review-highlights {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        max-width: 620px;
+    }
+
+    .review-highlight {
+        min-height: 118px;
+        padding: 18px;
+        border-radius: 8px;
+        background: #ffffff;
+        border: 1px solid rgba(16, 25, 61, 0.1);
+        box-shadow: 0 14px 35px rgba(16, 25, 61, 0.08);
+    }
+
+    .review-highlight i {
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        text-align: center;
-        margin-left: 10%;
-        margin-top: 180px;
-        border-radius: 10px;
+        margin-bottom: 13px;
+        border-radius: 8px;
+        color: #10193d;
+        background: #e4c1f9;
     }
 
-    .review-button:hover {
-        background-color: rgba(225, 176, 230, 0.75);
-        /* Darker shade of green */
-        color: white;
+    .review-highlight strong {
+        display: block;
+        color: #10193d;
+        font-size: 0.95rem;
+        line-height: 1.3;
     }
 
-    .access_reviews {
-        background-color: rgb(37, 164, 192);
-        padding: 10px;
-        text-align: center;
+    #review-form {
+        width: auto;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    #review-form.review-panel {
+        position: relative;
+        z-index: 1;
+        padding: 34px;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(16, 25, 61, 0.12);
+        border-radius: 8px;
+        box-shadow: 0 24px 70px rgba(16, 25, 61, 0.18);
+        backdrop-filter: blur(14px);
+    }
+
+    #review-form.review-panel::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(90deg, #10193d 0%, #2aa7a5 45%, #ef7b45 100%);
+    }
+
+    .submit-review {
+        margin: 0 0 8px;
+        color: #10193d;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1;
+        font-weight: 900;
+    }
+
+    .review-form-copy {
+        margin: 0 0 28px;
+        color: #59617c;
+        line-height: 1.6;
+    }
+
+    .review-field {
+        margin-bottom: 18px;
+    }
+
+    .review-field label,
+    .rating-label {
+        display: block;
+        margin-bottom: 8px;
+        color: #10193d;
+        font-weight: 800;
+        font-size: 0.88rem;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+
+    #review-form input[type='text'],
+    #review-form textarea {
+        width: 100%;
+        margin: 0;
+        padding: 15px 16px;
+        color: #10193d;
+        background: #f8f8f8;
+        border: 1px solid rgba(16, 25, 61, 0.14);
+        border-radius: 8px;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 1rem;
+        line-height: 1.5;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    #review-form input[type='text']:focus,
+    #review-form textarea:focus {
+        outline: none;
+        background: #ffffff;
+        border-color: #2aa7a5;
+        box-shadow: 0 0 0 4px rgba(42, 167, 165, 0.14);
+    }
+
+    .text-reviews {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    .star-rating {
         display: flex;
+        align-items: center;
+        gap: 7px;
+        margin: 6px 0 24px;
+        direction: ltr;
+        font-size: 0;
     }
 
-    .access_reviews a {
-        margin: 10px;
-        color: azure;
+    .star-rating input[type='radio'] {
+        display: none;
+    }
+
+    .star-rating label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        border-radius: 8px;
+        background: #fff7e8;
+        border: 1px solid rgba(239, 123, 69, 0.18);
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .star-rating label:hover {
+        transform: translateY(-3px);
+        background: #ffffff;
+        border-color: rgba(239, 123, 69, 0.45);
+    }
+
+    .star-rating label img {
+        width: 27px;
+        height: 27px;
+        display: block;
+    }
+
+    .submit-review-button {
+        width: 100%;
+        min-height: 52px;
+        margin: 0;
+        padding: 14px 22px;
+        color: #ffffff;
+        background: linear-gradient(135deg, #10193d 0%, #243066 100%);
+        border: none;
+        border-radius: 8px;
+        font-weight: 800;
+        font-size: 0.95rem;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        box-shadow: 0 14px 30px rgba(16, 25, 61, 0.24);
+    }
+
+    .submit-review-button:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(135deg, #2aa7a5 0%, #10193d 100%);
+        box-shadow: 0 18px 40px rgba(16, 25, 61, 0.28);
+    }
+
+    .review-button {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        margin: 22px 0 0;
+        padding: 14px;
+        border-radius: 8px;
+        background: #f8f8f8;
+        border: 1px solid rgba(16, 25, 61, 0.1);
+        text-align: left;
     }
 
     .raating_p {
-        margin: 20px;
+        margin: 0;
+        color: #39415f;
+        font-size: 0.94rem;
+        line-height: 1.4;
+    }
+
+    .access_reviews {
+        display: flex;
+        flex-shrink: 0;
+        padding: 0;
+        background: transparent;
+        text-align: center;
+    }
+
+    .access_reviews a {
+        display: inline-flex;
         align-items: center;
         justify-content: center;
+        min-height: 42px;
+        margin: 0;
+        padding: 10px 15px;
+        color: #10193d;
+        background: #e4c1f9;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 800;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .access_reviews a:hover {
+        transform: translateY(-2px);
+        background: #f5cf74;
+    }
+
+    .reviews-page .marquee {
+        background: #10193d;
+        color: #ffffff;
+    }
+
+    .reviews-page .track .font1,
+    .reviews-page .track .font2 {
+        letter-spacing: 0;
+    }
+
+    .rattings {
+        padding: 88px 24px 100px;
+        color: #10193d;
+        background:
+            linear-gradient(135deg, rgba(42, 167, 165, 0.14) 0%, rgba(255, 255, 255, 0) 42%),
+            #f8f8f8;
+    }
+
+    .reviews-section-shell {
+        width: min(1120px, 100%);
+        margin: 0 auto;
+    }
+
+    .reviews-section-header {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 28px;
+    }
+
+    .reviews-section-header h2 {
+        margin: 0;
+        color: #10193d;
+        font-size: clamp(2.4rem, 5vw, 5rem);
+        line-height: 1;
+        font-weight: 900;
+    }
+
+    .reviews-section-header p {
+        max-width: 420px;
+        margin: 0;
+        color: #59617c;
+        line-height: 1.65;
+    }
+
+    .rattings-box {
+        margin: 0;
+        padding: 28px;
+        background: #ffffff;
+        border: 1px solid rgba(16, 25, 61, 0.1);
+        border-radius: 8px;
+        box-shadow: 0 18px 50px rgba(16, 25, 61, 0.1);
+    }
+
+    .rattings-box > .averageRatingPlaceholder {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 18px;
+        padding: 10px 14px;
+        color: #10193d;
+        background: #fff7e8;
+        border-radius: 8px;
+        font-weight: 800;
+    }
+
+    #reviews {
+        width: 100%;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    #reviews .review {
+        padding: 22px 0;
+        border-top: 1px solid rgba(16, 25, 61, 0.1);
+    }
+
+    #reviews .review:first-child {
+        border-top: 0;
+    }
+
+    #reviews .review p {
+        margin: 0 0 10px;
+    }
+
+    #reviews .review p:last-child {
+        color: #39415f;
+        margin-bottom: 0;
+    }
+
+    #reviews .review img,
+    .averageRatingPlaceholder img {
+        width: 20px;
+        height: 20px;
+        vertical-align: text-bottom;
+    }
+
+    .w {
+        margin-top: 0;
+    }
+
+    .reviews-page .footer {
+        margin-top: 0;
+    }
+
+    @media only screen and (max-width: 980px) {
+        .reviews-page #section-home {
+            padding-top: 120px;
+        }
+
+        .reviews-shell {
+            grid-template-columns: 1fr;
+        }
+
+        .review-highlights {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    @media only screen and (max-width: 700px) {
+        .reviews-page #section-home {
+            padding: 105px 16px 64px;
+        }
+
+        .review-title {
+            font-size: clamp(2.6rem, 16vw, 4.4rem);
+        }
+
+        .review-highlights {
+            grid-template-columns: 1fr;
+        }
+
+        #review-form.review-panel {
+            padding: 26px 18px;
+        }
+
+        .star-rating {
+            gap: 5px;
+        }
+
+        .star-rating label {
+            width: 38px;
+            height: 38px;
+        }
+
+        .review-button {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        .access_reviews a {
+            width: 100%;
+        }
+
+        .reviews-section-header {
+            align-items: start;
+            flex-direction: column;
+        }
+
+        .rattings {
+            padding: 62px 16px 76px;
+        }
     }
 </style>
 
-<body>
+<body class="reviews-page">
     <div class="content">
         <div id="hidden-header">
             <div class="social-network">
@@ -127,11 +564,11 @@
             </div>
             <nav>
                 <ul class="nav-list" id="nav-list">
-                    <li><a id="hoverMeHome" href="#section-home">Home</a></li>
-                    <li><a id="hoverMeAbout" href="#section-about">About</a></li>
-                    <li><a id="hoverMeContact" href="#section-portfolio">Portfolio</a></li>
-                    <li><a id="hoverMePortfolio" href="#section-awards">Educations</a></li>
-                    <li><a id="hoverMeAwards" href="#section-contact">Contact</a></li>
+                    <li><a id="hoverMeHome" href="index.html">Home</a></li>
+                    <li><a id="hoverMeAbout" href="index.html#section-about">About</a></li>
+                    <li><a id="hoverMeContact" href="index.html#section-portfolio">Portfolio</a></li>
+                    <li><a id="hoverMePortfolio" href="index.html#section-awards">Education</a></li>
+                    <li><a id="hoverMeAwards" href="index.html#section-contact">Contact</a></li>
 
                     <div id="toggleButton"><i class="fa-solid fa-volume-high fa-2x"></i></div>
 
@@ -149,38 +586,66 @@
             <img src="img/arrow-red.svg" loading="lazy" alt="Scroll down arrow" class="image-31">
         </div>
 
-        <!-- Your page content goes here -->
         <div id="section-home" class="box">
+            <div class="reviews-shell">
+                <div class="review-intro">
+                    <p class="review-eyebrow"><i class="fa-solid fa-star"></i> Client Reviews</p>
+                    <h1 class="review-title">Share your experience</h1>
+                    <p class="review-copy">Your feedback helps future clients understand the quality, communication, and care behind each project.</p>
 
-            <div id="review-form">
-                <h2 class="submit-review">Submit Review</h2>
-                <form action="submit_review.php" method="post">
-                    <input name="name" placeholder="Your Name" required="" type="text" /><br />
-                    <textarea class="text-reviews" name="review" placeholder="Your Review" required=""></textarea><br />
-                    <input id="ratingValue" name="rating" type="hidden" value="5" />
-                    <div class="star-rating">
-                        <input data-star="☆" id="star-1" name="star" type="radio" value="1" />
-                        <label for="star-1" title="1 star"><img alt="☆" src="img/nostar.svg" /></label>
-                        <input data-star="☆" id="star-2" name="star" type="radio" value="2" />
-                        <label for="star-2" title="2 stars"><img alt="☆" src="img/nostar.svg" /></label>
-                        <input data-star="☆" id="star-3" name="star" type="radio" value="3" />
-                        <label for="star-3" title="3 stars"><img alt="☆" src="img/nostar.svg" /></label>
-                        <input data-star="☆" id="star-4" name="star" type="radio" value="4" />
-                        <label for="star-4" title="4 stars"><img alt="☆" src="img/nostar.svg" /></label>
-                        <input data-star="☆" id="star-5" name="star" type="radio" value="5" />
-                        <label for="star-5" title="5 stars"><img alt="☆" src="img/nostar.svg" /></label>
-                    </div>
-                    <input class="submit-review-button" type="submit" value="Submit Review" />
-
-                    <div class="review-button review-button2">
-                        <p class="averageRatingPlaceholder raating_p">Average Rating: Not Calculated Yet</p>
-
-                        <div class="access_reviews">
-                            <a href="customer_reviews.html#section-reviews" class="link-button">Read All Reviews</a>
+                    <div class="review-highlights">
+                        <div class="review-highlight">
+                            <i class="fa-solid fa-comments"></i>
+                            <strong>Clear feedback</strong>
+                        </div>
+                        <div class="review-highlight">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <strong>Better service</strong>
+                        </div>
+                        <div class="review-highlight">
+                            <i class="fa-solid fa-handshake"></i>
+                            <strong>Trusted work</strong>
                         </div>
                     </div>
-                </form>
+                </div>
 
+                <div id="review-form" class="review-panel">
+                    <h2 class="submit-review">Submit Review</h2>
+                    <p class="review-form-copy">Add your name, write a short review, and choose the rating that best reflects your experience.</p>
+                    <form action="submit_review.php" method="post">
+                        <div class="review-field">
+                            <label for="reviewer-name">Your Name</label>
+                            <input id="reviewer-name" name="name" placeholder="Your Name" required="" type="text" />
+                        </div>
+                        <div class="review-field">
+                            <label for="review-text">Your Review</label>
+                            <textarea id="review-text" class="text-reviews" name="review" placeholder="Your Review" required=""></textarea>
+                        </div>
+                        <input id="ratingValue" name="rating" type="hidden" value="5" />
+                        <span class="rating-label">Your Rating</span>
+                        <div class="star-rating">
+                            <input data-star="☆" id="star-1" name="star" type="radio" value="1" />
+                            <label for="star-1" title="1 star"><img alt="★" src="img/star.svg" /></label>
+                            <input data-star="☆" id="star-2" name="star" type="radio" value="2" />
+                            <label for="star-2" title="2 stars"><img alt="★" src="img/star.svg" /></label>
+                            <input data-star="☆" id="star-3" name="star" type="radio" value="3" />
+                            <label for="star-3" title="3 stars"><img alt="★" src="img/star.svg" /></label>
+                            <input data-star="☆" id="star-4" name="star" type="radio" value="4" />
+                            <label for="star-4" title="4 stars"><img alt="★" src="img/star.svg" /></label>
+                            <input checked data-star="☆" id="star-5" name="star" type="radio" value="5" />
+                            <label for="star-5" title="5 stars"><img alt="★" src="img/star.svg" /></label>
+                        </div>
+                        <input class="submit-review-button" type="submit" value="Submit Review" />
+
+                        <div class="review-button review-button2">
+                            <p class="averageRatingPlaceholder raating_p">Average Rating: Not Calculated Yet</p>
+
+                            <div class="access_reviews">
+                                <a href="customer_reviews.html#section-reviews" class="link-button">Read All Reviews</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
 
             <!-- <img class="stars" src="img/stars1.gif" alt=""> -->
@@ -206,16 +671,23 @@
         </div>
         <hr>
 
-        <div id="section-reviews" class="rattings">
-            <div class="rattings-box">
-                <p class="averageRatingPlaceholder">Average Rating: Not Calculated Yet</p>
-                <div id="reviews">
-                    <div id="reviewsContainer"></div>
-                    <!-- Reviews will be loaded here by JS -->
+        <section id="section-reviews" class="rattings">
+            <div class="reviews-section-shell">
+                <div class="reviews-section-header">
+                    <h2>What clients say</h2>
+                    <p>Recent reviews are loaded below, including the live average rating from submitted feedback.</p>
+                </div>
+
+                <div class="rattings-box">
+                    <p class="averageRatingPlaceholder">Average Rating: Not Calculated Yet</p>
+                    <div id="reviews">
+                        <div id="reviewsContainer"></div>
+                        <!-- Reviews will be loaded here by JS -->
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr>
+        </section>
+       
         <div id="section-about" class="container">
 
             <div class="experience-box hidden">
@@ -224,38 +696,63 @@
             </div>
         </div>
 
-        <div id="section-contact" class="box4">
+        
+        <footer class="footer">
+            <div class="footer-bg-shape"></div>
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <div class="footer-col footer-brand">
+                        <h3 class="footer-logo">Sorin Rotaru</h3>
+                        <p class="footer-tagline">Building digital experiences with passion and precision.</p>
+                        <div class="footer-social">
+                            <a id="faceMeFooter" href="https://www.facebook.com/sorin.rotaru.79" target="_blank" aria-label="Facebook">
+                                <i id="facebook-icon-footer" class="fab fa-facebook footer-social-icon"></i>
+                            </a>
+                            <a id="hoverMeFooter" href="https://twitter.com/sorin03032839" target="_blank" aria-label="Twitter">
+                                <i id="twitter-icon-footer" class="fab fa-twitter footer-social-icon"></i>
+                            </a>
+                            <a id="linkMeFooter" href="https://www.linkedin.com/in/sorin-rotaru-55a8a013a/" target="_blank" aria-label="LinkedIn">
+                                <i id="linkedin-icon-footer" class="fab fa-linkedin footer-social-icon"></i>
+                            </a>
+                        </div>
+                    </div>
 
-            <h4 class="lets-talk">Let's Talk</h4>
-            <div class="envelope" id="envelope">
+                    <div class="footer-col">
+                        <h4 class="footer-heading">Navigation</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#section-about">About</a></li>
+                            <li><a href="index.html#section-portfolio">Portfolio</a></li>
+                            <li><a href="index.html#section-awards">Education</a></li>
+                            <li><a href="index.html#section-contact">Contact</a></li>
+                        </ul>
+                    </div>
 
-                <form id="form" class="form">
-                    <label class="text-label label1" for="first_name"><span class="required"></span></label>
-                    <input class="text-box" type="text" id="first_name" name="first_name" placeholder="Full Name*"
-                        required />
+                    <div class="footer-col">
+                        <h4 class="footer-heading">Services</h4>
+                        <ul class="footer-links">
+                            <li><a href="help.html">Web Development</a></li>
+                            <li><a href="help.html">Amazon PPC</a></li>
+                            <li><a href="help.html">SEO Optimization</a></li>
+                            <li><a href="help.html">Digital Marketing</a></li>
+                        </ul>
+                    </div>
 
-                    <label class="text-label label4" for="email_address"><span class="required"></span></label>
-                    <input class="text-box" type="email" id="email_address" name="email_address" placeholder="Email*"
-                        required />
+                    <div class="footer-col">
+                        <h4 class="footer-heading">Get in Touch</h4>
+                        <ul class="footer-contact">
+                            <li><i class="fa-solid fa-envelope"></i><span>info@rotarusorin.com</span></li>
+                            <li><i class="fa-solid fa-location-dot"></i><span>United Kingdom</span></li>
+                            <li><i class="fa-solid fa-clock"></i><span>Available worldwide</span></li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <textarea id="message" class="textarea-box" placeholder="Message*" required></textarea>
-
-                    <input class="submit-button" type="submit" value="Send" />
-                </form>
-
-                <div class="flap top"></div>
-                <div class="flap bottom"></div>
-
+                <div class="footer-bottom">
+                    <p class="copi">&copy; <span id="footer-year"></span> Sorin Rotaru. All rights reserved.</p>
+                </div>
             </div>
-            <div class="sent" id="sent">MESSAGE SENT!</div>
-        </div>
-
-        <hr>
-        <div class="footer">
-            <p class="copi">
-                Copyright Sorin Rotaru 2023
-            </p>
-        </div>
+        </footer>
     </div>
 
     <script src="https://kit.fontawesome.com/1ea935c559.js" crossorigin="anonymous"></script>

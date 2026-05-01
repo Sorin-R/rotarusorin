@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mobile-styles.css">
-    <title>Beonmax Certificates | Sorin Rotaru</title>
+    <title>Arden University | Sorin Rotaru</title>
 </head>
 
 <style>
@@ -29,30 +29,6 @@
         background: linear-gradient(135deg, #e4c1f9 0%, #f0d9ff 50%, #ffffff 100%);
         text-align: center;
         overflow: hidden;
-    }
-
-    .doc-hero::before,
-    .doc-hero::after {
-        content: '';
-        position: absolute;
-        border-radius: 50%;
-        pointer-events: none;
-    }
-
-    .doc-hero::before {
-        top: -120px;
-        left: -120px;
-        width: 380px;
-        height: 380px;
-        background: radial-gradient(circle, rgba(155, 111, 196, 0.3) 0%, transparent 70%);
-    }
-
-    .doc-hero::after {
-        bottom: -100px;
-        right: -100px;
-        width: 320px;
-        height: 320px;
-        background: radial-gradient(circle, rgba(16, 25, 61, 0.1) 0%, transparent 70%);
     }
 
     .doc-eyebrow {
@@ -118,9 +94,10 @@
         background: #ffffff;
         border-radius: 24px;
         box-shadow: 0 10px 30px rgba(16, 25, 61, 0.12);
-        padding: 30px;
+        padding: 50px 30px;
         max-width: 900px;
         width: 100%;
+        text-align: center;
         overflow: hidden;
     }
 
@@ -134,16 +111,28 @@
         background: linear-gradient(90deg, #10193d 0%, #9b6fc4 50%, #e4c1f9 100%);
     }
 
-    .doc-card object,
-    .doc-card embed,
-    .doc-card iframe {
-        width: 100%;
-        height: 1100px;
-        max-height: 90vh;
-        border: none;
-        border-radius: 14px;
-        background: #f8f8f8;
+    .education-logo {
+        width: min(360px, 80%);
+        height: auto;
+        margin: 0 auto 28px;
         display: block;
+    }
+
+    .education-copy {
+        color: #4a5174;
+        font-size: 1rem;
+        line-height: 1.7;
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .doc-cta-wrap {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        text-align: center;
+        margin-top: 30px;
     }
 
     .doc-cta {
@@ -163,12 +152,6 @@
         box-shadow: 0 8px 20px rgba(16, 25, 61, 0.25);
     }
 
-    .doc-cta-secondary {
-        background: #ffffff;
-        color: #10193d;
-        border: 2px solid #10193d;
-    }
-
     .doc-cta:hover {
         transform: translateY(-3px);
         box-shadow: 0 12px 30px rgba(155, 111, 196, 0.4);
@@ -176,98 +159,31 @@
         color: #10193d;
     }
 
-    .doc-cta i {
-        transition: transform 0.3s ease;
-    }
-
-    .doc-cta:hover i:last-child {
-        transform: translateX(5px);
-    }
-
-    .doc-cta-wrap {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        flex-wrap: wrap;
-        text-align: center;
-        margin-top: 25px;
-    }
-
-    .cert-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 25px;
-        margin-top: 35px;
-    }
-
-    .cert-item {
-        position: relative;
-        background: #faf3ff;
-        border-radius: 18px;
-        padding: 30px 20px;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow: hidden;
-        border: 2px solid transparent;
-    }
-
-    .cert-item:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 40px rgba(16, 25, 61, 0.18);
-        border-color: #9b6fc4;
-        background: #ffffff;
-    }
-
-    .cert-item img {
-        width: 100%;
-        max-width: 200px;
-        height: auto;
-        margin: 0 auto 15px;
-        display: block;
-        transition: transform 0.4s ease;
-    }
-
-    .cert-item:hover img {
-        transform: scale(1.05);
-    }
-
-    .cert-item.zoomed img {
-        transform: scale(1.4);
-    }
-
-    .cert-item-label {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: #10193d;
-        margin: 0;
-    }
-
     @media (max-width: 768px) {
         .doc-hero {
             padding: 100px 20px 50px;
         }
+
         .doc-title {
             font-size: 2.5rem;
         }
+
         .doc-subtitle {
             font-size: 1rem;
         }
+
         .doc-hero-icon {
             width: 64px;
             height: 64px;
             font-size: 1.6rem;
         }
+
         .doc-content-wrap {
             padding: 50px 15px 70px;
         }
+
         .doc-card {
-            padding: 20px;
-        }
-        .doc-card object,
-        .doc-card embed,
-        .doc-card iframe {
-            height: 700px;
+            padding: 40px 20px;
         }
     }
 </style>
@@ -308,7 +224,6 @@
         <div class="hamburger">
             <div class="burger">
                 <i class="fa-solid fa-bars" id="burger-icon"></i>
-
                 <i class="fa-solid fa-xmark" id="close-icon" style="display: none;" style="padding-left: 10px;"></i>
             </div>
             <div class="social-network" id="social-network">
@@ -343,18 +258,6 @@
             </nav>
         </div>
 
-
-        <div id="hoverMeArrow" data-w-id="24695c93-78f2-ca45-d665-dd0cfcfb9f92" class="scroll-arrow22">
-            <div id="hoverMeScroll" class="scroll-text-container">
-                <img class="scroll-text2" src="img/Event Organizer.svg" alt="">
-                <div class="centered-i"></div>
-            </div>
-            <img src="https://uploads-ssl.webflow.com/5b54e064ef1d588c6d4a4264/6262deba18fa52ea2f3f18df_downarrowscroll.svg"
-                loading="lazy" alt="Scroll down arrow" class="image-31">
-        </div>
-
-        <!-- Your page content goes here -->
-
         <div id="hoverMeUp" class="scroll-circle">
             <div class="arrow"></div>
             <div class="scroll-text">Up</div>
@@ -362,40 +265,20 @@
 
         <section class="doc-hero">
             <span class="doc-eyebrow">Education</span>
-            <div class="doc-hero-icon"><i class="fa-solid fa-code"></i></div>
-            <h1 class="doc-title">Web Development Certificates</h1>
-            <p class="doc-subtitle">My HTML, CSS, and Bootstrap course completion certificates from Beonmax — the foundation of my web development journey.</p>
+            <div class="doc-hero-icon"><i class="fa-solid fa-building-columns"></i></div>
+            <h1 class="doc-title">Arden University</h1>
+            <p class="doc-subtitle">Education profile page for my Arden University studies.</p>
         </section>
 
         <section class="doc-content-wrap">
             <div class="doc-card">
-                <object data="PDF/beonmax.pdf" type="application/pdf" title="Beonmax Certificates PDF">
-                    <p>Your browser cannot display the PDF inline. Use the buttons below to open or download it.</p>
-                </object>
+                <img class="education-logo" src="img/ardenlogo.svg" alt="Arden University logo">
+                <p class="education-copy">This page is linked from the Education section and is ready for Arden University certificate details or a PDF when available.</p>
                 <div class="doc-cta-wrap">
-                    <a class="doc-cta" href="PDF/beonmax.pdf" target="_blank">
-                        <i class="fa-solid fa-file-pdf"></i>
-                        <span>Open Full PDF</span>
-                        <i class="fa-solid fa-arrow-right"></i>
+                    <a class="doc-cta" href="index.html#section-awards">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Back to Education</span>
                     </a>
-                    <a class="doc-cta doc-cta-secondary" href="PDF/beonmax.pdf" download="Beonmax-Certificates.pdf">
-                        <i class="fa-solid fa-download"></i>
-                        <span>Download Beonmax PDF</span>
-                    </a>
-                </div>
-                <div class="cert-grid">
-                    <div class="cert-item" onclick="this.classList.toggle('zoomed')">
-                        <img src="img/html.svg" alt="HTML Certificate">
-                        <p class="cert-item-label">HTML Certificate</p>
-                    </div>
-                    <div class="cert-item" onclick="this.classList.toggle('zoomed')">
-                        <img src="img/css.svg" alt="CSS Certificate">
-                        <p class="cert-item-label">CSS Certificate</p>
-                    </div>
-                    <div class="cert-item" onclick="this.classList.toggle('zoomed')">
-                        <img src="img/bootstrap.svg" alt="Bootstrap Certificate">
-                        <p class="cert-item-label">Bootstrap Certificate</p>
-                    </div>
                 </div>
             </div>
         </section>
