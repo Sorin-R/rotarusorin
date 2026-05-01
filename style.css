@@ -1555,10 +1555,11 @@ input[type="submit"].submit-button {
   padding-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 15px;
+  text-align: center;
 }
 
 .footer .copi {
@@ -1566,26 +1567,6 @@ input[type="submit"].submit-button {
   color: #8a92ac;
   font-size: 0.9rem;
   letter-spacing: 0.3px;
-}
-
-.back-to-top {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #e4c1f9 0%, #b88fd9 100%);
-  color: #10193d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(228, 193, 249, 0.3);
-}
-
-.back-to-top:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(228, 193, 249, 0.5);
 }
 
 @media only screen and (max-width: 992px) {
