@@ -109,8 +109,13 @@
     }
 
     .submenu-item {
-        padding: 0px 16px;
-        justify-content: space-evenly;
+        display: flex;
+        flex-direction: column; /* Arrange items one under another */
+        justify-content: center; /* Center vertically */
+        align-items: center; /* Center horizontally */
+        padding: 20px 16px; /* Equal padding for all sides */
+        gap: 15px; /* Equal vertical gap between items */
+        height: auto; /* Allow container to grow with items */
     }
 
     .education-title {
@@ -400,9 +405,10 @@
     }
 
     .submenu-item div {
+        width: 100%; /* Ensure each item block is the same width */
         color: #10193d;
         text-decoration: none;
-        margin-bottom: 5px;
+        margin-bottom: 0; /* Replaced by gap on the parent */
     }
 
     .toggle {
