@@ -107,13 +107,15 @@ const menuLinks = document.querySelectorAll('#hidden-header nav ul li a');
 // Add click event listener to each menu link
 menuLinks.forEach(link => {
   link.addEventListener('click', event => {
-    event.preventDefault(); // Prevent the default action (navigation)
+    const href = link.getAttribute('href') || '';
 
-    // Get the id of the target section from the href attribute of the link
-    const targetSectionId = link.getAttribute('href').substring(1);
-
-    // Scroll to the target section
-    scrollToSection(targetSectionId);
+    // For hash-only same-page anchors, intercept and smooth-scroll
+    if (href.startsWith('#')) {
+      event.preventDefault();
+      const targetSectionId = href.substring(1);
+      scrollToSection(targetSectionId);
+    }
+    // For cross-page links (e.g. index.html#section-x), let the browser navigate normally
   });
 });
 
