@@ -1442,17 +1442,17 @@ input[type="submit"].submit-button {
 
 .footer-social {
   display: flex;
-  gap: 15px;
+  gap: 0;
   flex-wrap: wrap;
   align-items: center;
 }
 
 .footer-social-icon {
-  font-size: 2em;
+  font-size: 1.6em;
   color: #f8f8f8;
   transition: all 2s;
   cursor: pointer;
-  padding: 10px;
+  padding: 6px;
   border-radius: 2px;
 }
 
