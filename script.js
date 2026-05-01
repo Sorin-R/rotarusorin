@@ -595,10 +595,16 @@ function isElementInViewport(element) {
 
 function showOnScroll() {
   var elements = document.getElementsByClassName('award-item');
+  var newlyVisible = 0;
 
-  Array.from(elements).forEach(function (element, index) {
-    if (isElementInViewport(element)) {
+  Array.from(elements).forEach(function (element) {
+    if (
+      isElementInViewport(element) &&
+      !element.classList.contains('animate-education-box')
+    ) {
+      element.style.animationDelay = newlyVisible * 0.13 + 's';
       element.classList.add('animate-education-box');
+      newlyVisible++;
     }
   });
 }
