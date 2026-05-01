@@ -19,11 +19,245 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mobile-styles.css">
-    <title>Sorin Rotaru</title>
+    <title>Amazon Setup | Sorin Rotaru</title>
 </head>
 
 <style>
-    </style>
+    .doc-hero {
+        position: relative;
+        padding: 140px 30px 70px;
+        background: linear-gradient(135deg, #e4c1f9 0%, #f0d9ff 50%, #ffffff 100%);
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .doc-hero::before,
+    .doc-hero::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .doc-hero::before {
+        top: -120px;
+        left: -120px;
+        width: 380px;
+        height: 380px;
+        background: radial-gradient(circle, rgba(155, 111, 196, 0.3) 0%, transparent 70%);
+    }
+
+    .doc-hero::after {
+        bottom: -100px;
+        right: -100px;
+        width: 320px;
+        height: 320px;
+        background: radial-gradient(circle, rgba(16, 25, 61, 0.1) 0%, transparent 70%);
+    }
+
+    .doc-eyebrow {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: #9b6fc4;
+        padding: 6px 18px;
+        background: rgba(228, 193, 249, 0.4);
+        border-radius: 50px;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .doc-hero-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        border-radius: 22px;
+        background: linear-gradient(135deg, #10193d 0%, #1a2454 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: #e4c1f9;
+        box-shadow: 0 10px 30px rgba(16, 25, 61, 0.25);
+        position: relative;
+        z-index: 1;
+    }
+
+    .doc-title {
+        font-size: 4rem;
+        font-weight: 900;
+        color: #10193d;
+        line-height: 1.1;
+        margin: 0 auto 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .doc-subtitle {
+        font-size: 1.1rem;
+        color: #4a5174;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+        position: relative;
+        z-index: 1;
+    }
+
+    .doc-content-wrap {
+        background: linear-gradient(135deg, #f8f8f8 0%, #faf3ff 100%);
+        padding: 70px 20px 100px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .doc-card {
+        position: relative;
+        background: #ffffff;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(16, 25, 61, 0.12);
+        padding: 30px;
+        max-width: 900px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .doc-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #10193d 0%, #9b6fc4 50%, #e4c1f9 100%);
+    }
+
+    .doc-card embed,
+    .doc-card iframe {
+        width: 100%;
+        height: 1100px;
+        max-height: 90vh;
+        border: none;
+        border-radius: 14px;
+        background: #f8f8f8;
+        display: block;
+    }
+
+    .doc-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 32px;
+        background: linear-gradient(135deg, #10193d 0%, #1a2454 100%);
+        color: #ffffff;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(16, 25, 61, 0.25);
+    }
+
+    .doc-cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(155, 111, 196, 0.4);
+        background: linear-gradient(135deg, #9b6fc4 0%, #b88fd9 100%);
+        color: #10193d;
+    }
+
+    .doc-cta i {
+        transition: transform 0.3s ease;
+    }
+
+    .doc-cta:hover i:last-child {
+        transform: translateX(5px);
+    }
+
+    .doc-cta-wrap {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+
+    .cert-item {
+        position: relative;
+        background: #faf3ff;
+        border-radius: 18px;
+        padding: 30px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        border: 2px solid transparent;
+    }
+
+    .cert-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(16, 25, 61, 0.18);
+        border-color: #9b6fc4;
+        background: #ffffff;
+    }
+
+    .cert-item img {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        margin: 0 auto 15px;
+        display: block;
+        transition: transform 0.4s ease;
+    }
+
+    .cert-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .cert-item.zoomed img {
+        transform: scale(1.4);
+    }
+
+    .cert-item-label {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #10193d;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .doc-hero {
+            padding: 100px 20px 50px;
+        }
+        .doc-title {
+            font-size: 2.5rem;
+        }
+        .doc-subtitle {
+            font-size: 1rem;
+        }
+        .doc-hero-icon {
+            width: 64px;
+            height: 64px;
+            font-size: 1.6rem;
+        }
+        .doc-content-wrap {
+            padding: 50px 15px 70px;
+        }
+        .doc-card {
+            padding: 20px;
+        }
+        .doc-card embed,
+        .doc-card iframe {
+            height: 700px;
+        }
+    }
+</style>
 
 <body>
     <div class="content">
@@ -112,56 +346,84 @@
         <div id="hoverMeUp" class="scroll-circle">
             <div class="arrow"></div>
             <div class="scroll-text">Up</div>
-        </div>
 
+        <section class="doc-hero">
+            <span class="doc-eyebrow">Education</span>
+            <div class="doc-hero-icon"><i class="fa-solid fa-store"></i></div>
+            <h1 class="doc-title">Amazon Setup Certificate</h1>
+            <p class="doc-subtitle">Amazon Seller Central account setup and management certification — proof of expertise in launching and operating Amazon storefronts.</p>
+        </section>
 
-        <div id="section-about" class="container">
-            <div class="experience-box"> </div>
-        </div>
-
-        <div class="beonmax-page">
-            <div class="beonmax-img">
-                <embed class="pdf-closer" src="PDF/setup.pdf" type="application/pdf" width="800px" height="1800" />
-                <div class="pdf-wrapper">
-                    <a class="pdf-oppener" href="PDF/setup.pdf" target="_blank">
-                        <img src="img/pdf-icon.svg" alt="PDF Icon">
-                        Open PDF
+        <section class="doc-content-wrap">
+            <div class="doc-card">
+                <embed src="PDF/setup.pdf" type="application/pdf" />
+                <div class="doc-cta-wrap">
+                    <a class="doc-cta" href="PDF/setup.pdf" target="_blank">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span>Open Full PDF</span>
+                        <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
+        </section>
         </div>
+
+        <footer class="footer">
+            <div class="footer-bg-shape"></div>
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <div class="footer-col footer-brand">
+                        <h3 class="footer-logo">Sorin Rotaru</h3>
+                        <p class="footer-tagline">Building digital experiences with passion and precision.</p>
+                        <div class="footer-social">
+                            <a id="faceMeFooter" href="https://www.facebook.com/sorin.rotaru.79" target="_blank" aria-label="Facebook">
+                                <i id="facebook-icon-footer" class="fab fa-facebook footer-social-icon"></i>
+                            </a>
+                            <a id="hoverMeFooter" href="https://twitter.com/sorin03032839" target="_blank" aria-label="Twitter">
+                                <i id="twitter-icon-footer" class="fab fa-twitter footer-social-icon"></i>
+                            </a>
+                            <a id="linkMeFooter" href="https://www.linkedin.com/in/sorin-rotaru-55a8a013a/" target="_blank" aria-label="LinkedIn">
+                                <i id="linkedin-icon-footer" class="fab fa-linkedin footer-social-icon"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4 class="footer-heading">Navigation</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#section-about">About</a></li>
+                            <li><a href="index.html#section-portfolio">Portfolio</a></li>
+                            <li><a href="index.html#section-awards">Education</a></li>
+                            <li><a href="index.html#section-contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4 class="footer-heading">Get in Touch</h4>
+                        <ul class="footer-contact">
+                            <li><i class="fa-solid fa-envelope"></i><span>sorin15121978@gmail.com</span></li>
+                            <li><i class="fa-solid fa-location-dot"></i><span>United Kingdom</span></li>
+                            <li><i class="fa-solid fa-clock"></i><span>Available worldwide</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p class="copi">&copy; <span id="footer-year"></span> Sorin Rotaru. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
     </div>
 
-
-
-    <div class="footer">
-        <p class="copi">
-            Copyright Sorin Rotaru 2023
-        </p>
-    </div>
-    </div>
     <script src="https://kit.fontawesome.com/1ea935c559.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
-
     <script>
-        // 16. Disable zooming on mobile devices for the form
-        function disableZoomForForm() {
-            var viewportMetaTag = document.querySelector('meta[name="viewport"]');
-            viewportMetaTag.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
-        }
-
-        // Call the function to disable zooming for the form
-        disableZoomForForm();
+        document.addEventListener('DOMContentLoaded', function () {
+            var fy = document.getElementById('footer-year');
+            if (fy) fy.textContent = new Date().getFullYear();
+        });
     </script>
-    <script>
-
-        function zoomImage(img) {
-            img.classList.toggle('zoomed');
-        }
-
-    </script>
-
-
 </body>
 
 </html>
