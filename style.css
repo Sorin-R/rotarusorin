@@ -908,6 +908,18 @@ hr {
   box-shadow: #000000 0px 0px 10px;
 }
 
+.itcareerswitch {
+  background-image: url(/img/itcareerswitch.svg);
+  background-size: 75%;
+  box-shadow: #000000 0px 0px 10px;
+}
+
+.codacademy {
+  background-image: url(/img/codacademy.svg);
+  background-size: 75%;
+  box-shadow: #000000 0px 0px 10px;
+}
+
 .readmore {
   display: none;
   position: absolute;
@@ -1035,7 +1047,6 @@ hr {
 .envelope {
   position: relative;
   width: 100%;
-  min-height: 500px;
   background: #ffffff;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(16, 25, 61, 0.15);
@@ -1066,7 +1077,7 @@ hr {
   width: 100%;
   padding: 15px;
   margin-bottom: 20px;
-  border: 2px solid #e4c1f9;
+  border: 2px solid #10193d;
   border-radius: 10px;
   font-family: 'Arial', sans-serif;
   font-size: 16px;
