@@ -1442,31 +1442,25 @@ input[type="submit"].submit-button {
 
 .footer-social {
   display: flex;
-  gap: 12px;
+  gap: 15px;
   flex-wrap: wrap;
-}
-
-.social-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.08);
-  color: #f8f8f8;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.social-icon:hover {
-  background: linear-gradient(135deg, #e4c1f9 0%, #b88fd9 100%);
-  color: #10193d;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 20px rgba(228, 193, 249, 0.4);
-  border-color: transparent;
+.footer-social-icon {
+  font-size: 2em;
+  color: #f8f8f8;
+  transition: all 2s;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+#facebook-icon-footer.animate,
+#twitter-icon-footer.animate,
+#linkedin-icon-footer.animate {
+  transform: rotate(360deg) scale(1.2);
+  color: #1e90ff;
 }
 
 .footer-heading {

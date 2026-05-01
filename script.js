@@ -151,11 +151,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // 8. List of icon IDs
-const iconIds = ['facebook-icon', 'twitter-icon', 'linkedin-icon'];
+const iconIds = ['facebook-icon', 'twitter-icon', 'linkedin-icon', 'facebook-icon-footer', 'twitter-icon-footer', 'linkedin-icon-footer'];
 
 // Iterate over each icon ID
 iconIds.forEach(iconId => {
   const iconElement = document.getElementById(iconId);
+  if (!iconElement) return;
 
   // Add event listener for mouseover event to add 'animate' class
   iconElement.addEventListener('mouseover', () => {
