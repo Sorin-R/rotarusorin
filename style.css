@@ -640,7 +640,7 @@ hr {
 }
 
 .about-headline {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 900;
   color: #10193d;
   margin: 0 0 10px 0;
@@ -844,7 +844,7 @@ hr {
   }
 
   .about-headline {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
 
   .about-title .p1,
@@ -1109,10 +1109,12 @@ hr {
 
 .portfolio-title {
   display: block;
-  font-size: 100px;
+  font-size: 4rem;
+  font-weight: 900;
   padding: 10px;
   text-align: center;
   color: #10193d;
+  line-height: 1.1;
 }
 
 .portfolio-item {
@@ -1239,11 +1241,13 @@ hr {
 .education-title {
   display: block;
   position: absolute;
-  font-size: 100px;
+  font-size: 4rem;
+  font-weight: 900;
   padding: 10px;
   text-align: center;
-  margin-top: -130px;
+  margin-top: -90px;
   color: #10193d;
+  line-height: 1.1;
 }
 
 #section-awards {
@@ -1445,11 +1449,12 @@ hr {
 
 .lets-talk {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 900;
   color: #10193d;
   margin: 0 0 50px 0;
   position: static;
+  line-height: 1.1;
 }
 
 .envelope-wrapper {
@@ -1743,7 +1748,7 @@ input[type="submit"].submit-button {
   }
 
   .lets-talk {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     margin-bottom: 20px;
   }
 
