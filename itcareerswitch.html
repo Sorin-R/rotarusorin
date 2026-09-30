@@ -127,6 +127,72 @@
         margin: 0 auto;
     }
 
+    .learning-summary {
+        max-width: 1040px;
+        margin: 0 auto;
+        color: #4a5174;
+        line-height: 1.7;
+    }
+
+    .learning-summary h2 {
+        color: #10193d;
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+        margin: 0 0 12px;
+    }
+
+    .learning-summary > p {
+        max-width: 780px;
+        margin: 0 auto 30px;
+    }
+
+    .learning-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        text-align: left;
+    }
+
+    .learning-card {
+        background: #faf3ff;
+        border: 1px solid #e4c1f9;
+        border-radius: 16px;
+        padding: 24px;
+    }
+
+    .learning-card h3 {
+        color: #10193d;
+        font-size: 1.1rem;
+        margin: 0 0 10px;
+    }
+
+    .learning-card p {
+        margin: 0;
+        font-size: 0.95rem;
+    }
+
+    .learning-card strong {
+        color: #3d6b86;
+    }
+
+    .learning-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 24px;
+        text-align: left;
+    }
+
+    .learning-step {
+        color: #10193d;
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 14px 16px;
+        background: #ffffff;
+        border-left: 4px solid #9b6fc4;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(16, 25, 61, 0.08);
+    }
+
     .doc-cta-wrap {
         display: flex;
         justify-content: center;
@@ -185,6 +251,11 @@
 
         .doc-card {
             padding: 40px 20px;
+        }
+
+        .learning-grid,
+        .learning-steps {
+            grid-template-columns: 1fr;
         }
     }
 </style>
@@ -268,13 +339,43 @@
             <span class="doc-eyebrow">Education</span>
             <div class="doc-hero-icon"><i class="fa-solid fa-laptop-code"></i></div>
             <h1 class="doc-title">IT Career Switch</h1>
-            <p class="doc-subtitle">Education profile page for my IT Career Switch training.</p>
+            <p class="doc-subtitle">What I learned during my Coding Traineeship in 2024.</p>
         </section>
 
         <section class="doc-content-wrap">
             <div class="doc-card">
                 <img class="education-logo" src="img/itcareerswitch.svg" alt="IT Career Switch logo">
-                <p class="education-copy">This page is linked from the Education section and is ready for IT Career Switch certificate details or a PDF when available.</p>
+                <div class="learning-summary">
+                    <h2>What I learned</h2>
+                    <p>My IT Career Switch coding traineeship gave me a practical foundation in web and software
+                        development, from writing front-end code to building projects and presenting my work in a
+                        portfolio.</p>
+
+                    <div class="learning-grid">
+                        <article class="learning-card">
+                            <h3>Web development foundations</h3>
+                            <p><strong>HTML, CSS, JavaScript and Python</strong> for creating responsive interfaces,
+                                understanding programming logic and working with both front-end and back-end concepts.</p>
+                        </article>
+                        <article class="learning-card">
+                            <h3>Full-stack tools</h3>
+                            <p>Introduction to <strong>PHP, SQL, jQuery, React, Bootstrap, APIs, Java, GitHub and
+                                C#</strong>, with an emphasis on how the technologies fit together in real projects.</p>
+                        </article>
+                        <article class="learning-card">
+                            <h3>Practical development</h3>
+                            <p>Applied my learning through <strong>mini exercises, an internal assessment, two practical
+                                projects and a personal portfolio website</strong> designed to showcase my skills.</p>
+                        </article>
+                    </div>
+
+                    <div class="learning-steps" aria-label="Training pathway">
+                        <div class="learning-step">01. Introduction to development</div>
+                        <div class="learning-step">02. Full-stack development</div>
+                        <div class="learning-step">03. Two practical projects</div>
+                        <div class="learning-step">04. Portfolio website</div>
+                    </div>
+                </div>
                 <div class="doc-cta-wrap">
                     <a class="doc-cta" href="index.html#section-awards">
                         <i class="fa-solid fa-arrow-left"></i>
