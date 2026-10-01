@@ -1296,6 +1296,43 @@ hr {
   padding: 12px 26px;
 }
 
+.websites-portfolio .submenu {
+  max-height: 0;
+}
+
+.websites-portfolio.active .submenu {
+  max-height: 1000px;
+}
+
+.websites-list {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.website-entry {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.website-entry a {
+  width: fit-content;
+}
+
+.tech-stack {
+  display: block;
+  color: #6c7290;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  padding-left: 10px;
+}
+
+.tech-stack strong {
+  color: #10193d;
+}
+
 .padding-submenu {
   padding: 0;
 }
